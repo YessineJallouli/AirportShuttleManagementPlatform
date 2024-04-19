@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {SafeAreaView, View, StyleSheet} from 'react-native';
+import { PaperProvider } from 'react-native-paper';
 import SignInScreen from './src/screens/signInScreen';
-import { PaperProvider,  MD3LightTheme as DefaultTheme, } from 'react-native-paper';
+import SignUpOptionsScreen from './src/screens/signUpOptionsScreen';
 
 const App = () => {
     return(
         <PaperProvider>
             <SafeAreaView style = {styles.container}>
-                <SignInScreen/>
+                <SignUpOptionsScreen/>
             </SafeAreaView>
         </PaperProvider>
         

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import Logo from '../../assets/logo_tmp.jpg';
+import Logo from '../../assets/Images/logo_tmp.jpg';
 import TypeWriter from 'react-native-typewriter'
 import CustomInput from '../components/CustomInput';
 import { Button, IconButton, MD3Colors } from 'react-native-paper';
