@@ -2,6 +2,7 @@ import React from 'react';
 import {ScrollView, View, Text, Image, StyleSheet} from 'react-native';
 import TypeWriter from 'react-native-typewriter'
 import CustomInput from '../components/CustomInput';
+import DatePicker from "../components/DatePicker";
 import { Button, IconButton, MD3Colors } from 'react-native-paper';
 
 
@@ -13,14 +14,15 @@ const SignUpScreen = () =>(
         width: '100%',
         padding: '5%',
     }} contentContainerStyle={{
-        alignItems: 'center'}}
+        alignItems: 'center' }}
     >
         <Image source={logo} style ={styles.logo}/>
         <TypeWriter typing = {1} style = {styles.welcomeText}>Land Anywhere and we'll give you a ride...</TypeWriter>
         <CustomInput name = 'Email' secure = {false}/>
         <CustomInput name = 'Full name' secure = {false}/>
         <CustomInput name = 'Password' secure = {true}/>
-        <CustomInput name = 'Confirm Password' secure = {true}/>
+        <CustomInput name = 'Confirm Password' secure  = {true}/>
+        <DatePicker>  </DatePicker>
 
         <Button mode = 'contained-tonal' style = {styles.signUpButton} onPress={() => console.log('Pressed')}>
             <Text style = {{color : 'white'}}>Sign Up</Text>
