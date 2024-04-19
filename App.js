@@ -4,6 +4,8 @@ import { PaperProvider } from 'react-native-paper';
 import SignInScreen from './src/screens/signInScreen';
 import SignUpOptionsScreen from './src/screens/signUpOptionsScreen';
 import SignUpUserScreen from "./src/screens/signUpUserScreen";
+import ForgotPasswordScreen from './src/screens/forgotPassword';
+import VerificationCodeScreen from './src/screens/enterCode';
 
 const App = () => {
     return(
