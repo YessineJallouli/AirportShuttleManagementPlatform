@@ -3,13 +3,13 @@ import {SafeAreaView, View, StyleSheet} from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import SignInScreen from './src/screens/signInScreen';
 import SignUpOptionsScreen from './src/screens/signUpOptionsScreen';
-import SignUpScreen from "./src/screens/signUpScreen";
+import SignUpUserScreen from "./src/screens/signUpUserScreen";
 
 const App = () => {
     return(
         <PaperProvider>
             <SafeAreaView style = {styles.container}>
-                <SignUpScreen/>
+                <SignUpUserScreen/>
             </SafeAreaView>
         </PaperProvider>
 

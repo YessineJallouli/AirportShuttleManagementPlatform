@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {ScrollView, View, Text, Image, StyleSheet} from 'react-native';
 import TypeWriter from 'react-native-typewriter'
@@ -9,13 +8,12 @@ import DatePicker from "../components/DatePicker";
 
 const logo = require('../../assets/Images/logo_tmp.jpg');
 
-const SignUpScreen = () =>{
+const SignUpUserScreen = () =>{
     const [emailValue, setEmail] = useState("");
     const [pwdValue, setPwdValue] = useState("");
     const [confPwdValue, setConfPwdValue] = useState("");
     const [emailValid, setEmailValid] = useState(true);
     const [pwdMatch, setPwdMatch] = useState(true);
-    const [pwdValid, setPwdValid] = useState(true);
     const [pwdError, setPwdError] = useState("");
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return(
@@ -113,4 +111,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SignUpScreen;
+export default SignUpUserScreen;
