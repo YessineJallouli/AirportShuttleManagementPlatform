@@ -16,7 +16,8 @@ const CustomInput = (props) => {
 
 const styles = StyleSheet.create({
     textBox : {
-        width : '80%'
+        width : '80%',
+        marginBottom : 10
     }
 });
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {SafeAreaView, View, StyleSheet} from 'react-native';
 import SignInScreen from './src/screens/signInScreen';
-import { PaperProvider } from 'react-native-paper';
+import { PaperProvider,  MD3LightTheme as DefaultTheme, } from 'react-native-paper';
 
 const App = () => {
     return(
