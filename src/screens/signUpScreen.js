@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {ScrollView, View, Text, Image, StyleSheet} from 'react-native';
 import TypeWriter from 'react-native-typewriter'
 import CustomInput from '../components/CustomInput';
 import { Button, IconButton, MD3Colors } from 'react-native-paper';
+import validatePassword from '../components/validatePassword';
 
 
 const logo = require('../../assets/Images/logo_tmp.jpg');
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     signUpButton : {
         backgroundColor : MD3Colors.primary20,
         width : '70%',
+        marginTop: 10,
         marginBottom : 20
 
     },
