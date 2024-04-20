@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Logo from '../../assets/Images/logo_tmp.jpg';
 import TypeWriter from 'react-native-typewriter'
 import CustomInput from '../components/CustomInput';
 import { Button, IconButton, MD3Colors } from 'react-native-paper';
 
-const SignInScreen = () =>{
+const SignInScreen = ({navigation}) =>{
     return(
         <View style = {styles.parentContainer}>
             <Image source={Logo} style ={styles.logo}/>
@@ -13,7 +13,7 @@ const SignInScreen = () =>{
             <CustomInput name = 'Email' secure = {false}/>
             <CustomInput name = 'password' secure = {true}/>
             <View style = {styles.forgetPwdContainer}>
-                <Text style = {styles.forgetPwdText}>Forgot Password ?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUpOptions')}><Text style = {styles.forgetPwdText}>Forgot Password ?</Text></TouchableOpacity>
             </View>
             <Button mode = 'contained-tonal' style = {styles.signInButton} onPress={() => console.log('Pressed')}>
                 <Text style = {{color : 'white'}}>Sign In</Text>
@@ -23,8 +23,9 @@ const SignInScreen = () =>{
                 <IconButton icon="facebook" iconColor={MD3Colors.primary20} size = {50} onPress={() => console.log('Pressed')}></IconButton>
                 <IconButton icon="google" iconColor={MD3Colors.primary20} size = {50} onPress={() => console.log('Pressed')}></IconButton>
             </View>
-            <View>
-                <Text>You don't have an account? <Text style = {styles.signUpText}>Sign up</Text></Text>
+            <View style = {{flexDirection : 'row', alignItems: 'center'}}>
+                <Text>You don't have an account? </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('SignUpOptions')}><Text style = {styles.signUpText}>Sign up</Text></TouchableOpacity>
             </View> 
         </View>
         

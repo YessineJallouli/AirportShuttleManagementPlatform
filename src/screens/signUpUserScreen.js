@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {ScrollView, View, Text, Image, StyleSheet} from 'react-native';
-import TypeWriter from 'react-native-typewriter'
+import TypeWriter from 'react-native-typewriter';
 import CustomInput from '../components/CustomInput';
 import { Button, IconButton, MD3Colors } from 'react-native-paper';
 import validatePassword from '../components/validatePassword';

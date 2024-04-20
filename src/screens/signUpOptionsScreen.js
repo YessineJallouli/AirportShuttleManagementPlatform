@@ -5,7 +5,7 @@ import userImage from '../../assets/Images/user.jpg'
 import { Button , MD3Colors } from 'react-native-paper';
 
 
-const SignUpOptionsScreen = () => {
+const SignUpOptionsScreen = ({navigation}) => {
     const [isDriverPressed, setIsDriverPressed] = useState(false);
     const [isUserPressed, setIsUserPressed] = useState(false);
 
@@ -31,7 +31,13 @@ const SignUpOptionsScreen = () => {
         </Pressable>
 
         </View>
-        <Button mode = "contained" onPress = {() => {console.log("button pressed")}}>
+        <Button mode = "contained" onPress = {() => {
+            if(isUserPressed){
+                navigation.navigate('SignUpUser');
+            }else{
+
+            }
+        }}>
             Continue 
         </Button>
         </View>
