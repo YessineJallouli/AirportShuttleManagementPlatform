@@ -13,7 +13,7 @@ const SignInScreen = ({navigation}) =>{
             <CustomInput name = 'Email' secure = {false}/>
             <CustomInput name = 'password' secure = {true}/>
             <View style = {styles.forgetPwdContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('SignUpOptions')}><Text style = {styles.forgetPwdText}>Forgot Password ?</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('ForgotPwd')}><Text style = {styles.forgetPwdText}>Forgot Password ?</Text></TouchableOpacity>
             </View>
             <Button mode = 'contained-tonal' style = {styles.signInButton} onPress={() => console.log('Pressed')}>
                 <Text style = {{color : 'white'}}>Sign In</Text>

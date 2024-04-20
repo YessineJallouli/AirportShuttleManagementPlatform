@@ -1,28 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { Button, IconButton, MD3Colors } from 'react-native-paper';
+import { Button, MD3Colors } from 'react-native-paper';
+import CustomInput from '../components/CustomInput';
 
-const ForgotPasswordScreen = () => {
+const ForgotPasswordScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
-
-  const handleSendVerificationCode = () => {
-    // Here you can implement the logic to send the verification code
-    console.log('Sending verification code to:', email);
-  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Forgot Password?</Text>
       <Text style={styles.subtitle}>Enter your email:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Your email"
-        value={email}
-        onChangeText={text => setEmail(text)}
+      <CustomInput
+        name = "Email"
+        secure = {false} 
       />
-      <TouchableOpacity style={styles.button} onPress={handleSendVerificationCode}>
-        <Text style={styles.buttonText}>Send me a verification code</Text>
-      </TouchableOpacity>
+       <Button mode = 'contained-tonal' style = {{backgroundColor : MD3Colors.primary20, marginTop : 20}} onPress={() => navigation.navigate("enterCode")}>
+                <Text style = {{color : 'white'}}>Send me a verification code</Text>
+        </Button>
     </View>
   );
 };
@@ -30,10 +24,10 @@ const ForgotPasswordScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    paddingTop: 50,
   },
+
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -42,27 +36,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 18,
     marginBottom: 20,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: '#007bff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
+  }
 });
 
 export default ForgotPasswordScreen;
