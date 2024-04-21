@@ -4,7 +4,6 @@ import driverImage from '../../assets/Images/driver.jpg'
 import userImage from '../../assets/Images/user.jpg'
 import { Button , MD3Colors } from 'react-native-paper';
 
-
 const SignUpOptionsScreen = ({navigation}) => {
     const [isDriverPressed, setIsDriverPressed] = useState(false);
     const [isUserPressed, setIsUserPressed] = useState(false);
@@ -13,24 +12,32 @@ const SignUpOptionsScreen = ({navigation}) => {
         <View style = {styles.container}>
             <Text style= {{fontSize : 20, marginTop: 20, marginBottom : 40}}>Sign up as</Text>
         <View style = {styles.subContainer}>
-            <Pressable style = {styles.pressContainer} onPress = {() => {setIsDriverPressed(true); setIsUserPressed(false);}}>
-            <Image
-                source= {driverImage}
-                style = {[styles.img,  isDriverPressed && styles.pressed ]}  
-            />
-            <Text style = {{marginTop : 10}}>Driver</Text>
-        </Pressable>
-
-        <Pressable style = {styles.pressContainer} onPress = {() => {setIsDriverPressed(false); setIsUserPressed(true);}}>
-            <Image
-                source= {userImage}
-                style = {[styles.img, isUserPressed && styles.pressed]}
-                resizeMode='contain'
-            />
-            <Text style = {{marginTop : 10}}>User</Text>
-        </Pressable>
-
+            {[
+                {text : 'Driver',
+                image: driverImage, 
+                isPressed : isDriverPressed, 
+                handlePress : () => {setIsDriverPressed(true); setIsUserPressed(false);}},
+                {text : 'User', 
+                image: userImage, 
+                isPressed : isUserPressed, 
+                handlePress : () => {setIsDriverPressed(false); setIsUserPressed(true);}}
+            ].map((content, index) => {
+                return(
+                <Pressable 
+                    key = {index} 
+                    style = {styles.pressContainer} 
+                    onPress = {content.handlePress}>
+                    <Image
+                        source= {content.image}
+                        style = {[styles.img,  content.isPressed && styles.pressed ]}
+                        resizeMode='contain'  
+                    />
+                    <Text style = {{marginTop : 10}}>{content.text}</Text>
+                </Pressable>    
+                );
+            })}
         </View>
+       
         <Button mode = "contained" onPress = {() => {
             if(isUserPressed){
                 navigation.navigate('SignUpUser');

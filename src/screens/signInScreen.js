@@ -1,32 +1,57 @@
-import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import Logo from '../../assets/Images/logo_tmp.jpg';
-import TypeWriter from 'react-native-typewriter'
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { IconButton, MD3Colors } from 'react-native-paper';
+
 import CustomInput from '../components/CustomInput';
-import { Button, IconButton, MD3Colors } from 'react-native-paper';
+import CustomButton from '../components/CustomButton';
+import PressableText from '../components/PressableText';
+import MainHeader from '../components/MainHeader';
 
 const SignInScreen = ({navigation}) =>{
     return(
         <View style = {styles.parentContainer}>
-            <Image source={Logo} style ={styles.logo}/>
-            <TypeWriter typing = {1} style = {styles.welcomeText}>Land Anywhere and we'll give you a ride...</TypeWriter>
-            <CustomInput name = 'Email' secure = {false}/>
-            <CustomInput name = 'password' secure = {true}/>
+           
+           <MainHeader/>
+
+            <CustomInput 
+                name = 'Email' 
+                secure = {false}
+            />
+
+            <CustomInput 
+                name = 'password'
+                secure = {true}
+            />
+
             <View style = {styles.forgetPwdContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('ForgotPwd')}><Text style = {styles.forgetPwdText}>Forgot Password ?</Text></TouchableOpacity>
+                <PressableText
+                    name='Forgot Password ?'
+                    textStyle = {styles.forgetPwdText}
+                    onPress = {() => navigation.navigate('ForgotPwd')}
+                />
             </View>
-            <Button mode = 'contained-tonal' style = {styles.signInButton} onPress={() => console.log('Pressed')}>
-                <Text style = {{color : 'white'}}>Sign In</Text>
-            </Button>
+
+            <CustomButton 
+                name = "Sign In"
+                onPress = {() => {console.log("pressed")}}    
+            />
+
             <Text>Or Login With</Text>
-            <View style = {{flexDirection : 'row'}}>
-                <IconButton icon="facebook" iconColor={MD3Colors.primary20} size = {50} onPress={() => console.log('Pressed')}></IconButton>
-                <IconButton icon="google" iconColor={MD3Colors.primary20} size = {50} onPress={() => console.log('Pressed')}></IconButton>
-            </View>
+
+            <IconButton 
+                icon="google" 
+                iconColor={MD3Colors.primary20} 
+                size = {50} 
+                onPress={() => console.log('Pressed')}>
+            </IconButton>
+
             <View style = {{flexDirection : 'row', alignItems: 'center'}}>
                 <Text>You don't have an account? </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('SignUpOptions')}><Text style = {styles.signUpText}>Sign up</Text></TouchableOpacity>
-            </View> 
+                <PressableText
+                    name='Sign Up'
+                    textStyle = {styles.signUpText}
+                    onPress = {() => navigation.navigate('SignUpOptions')}
+                />
+            </View>
         </View>
         
     );
@@ -49,26 +74,6 @@ const styles = StyleSheet.create({
     forgetPwdText : {
         color: MD3Colors.error50, 
         fontSize : 15
-    },
-
-    logo : {
-        width : '80%',
-        height : '30%',
-    },
-
-    welcomeText : {
-        fontSize : 15,
-        fontWeight : 'bold',
-        marginBottom : 40
-        // borderWidth : 1, 
-        // borderColor : "black",
-    },
-
-    signInButton : {
-        backgroundColor : MD3Colors.primary20,
-        width : '70%',
-        marginBottom : 20
-
     },
 
     signUpText : {

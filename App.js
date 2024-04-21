@@ -6,7 +6,7 @@ import SignInScreen from "./src/screens/signInScreen";
 import SignUpOptionsScreen from "./src/screens/signUpOptionsScreen";
 import SignUpUserScreen from "./src/screens/signUpUserScreen";
 import ForgotPasswordScreen from "./src/screens/forgotPassword";
-import VerificationCodeScreen from "./src/screens/enterCodeScreen";
+import ResetPasswordScreen from "./src/screens/resetPasswordScreen"
 
 const Stack = createNativeStackNavigator();
 
@@ -36,8 +36,8 @@ const App = () => {
               name="ForgotPwd" 
               component={ForgotPasswordScreen} />
              <Stack.Screen 
-              name="enterCode" 
-              component={VerificationCodeScreen} />
+              name="ResetPassword" 
+              component={ResetPasswordScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>

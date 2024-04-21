@@ -1,22 +1,26 @@
-import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { Button, MD3Colors } from 'react-native-paper';
+import { View, Text, StyleSheet } from 'react-native';
 import CustomInput from '../components/CustomInput';
+import CustomButton from '../components/CustomButton';
 
 const ForgotPasswordScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
 
   return (
     <View style={styles.container}>
+
       <Text style={styles.title}>Forgot Password?</Text>
+
       <Text style={styles.subtitle}>Enter your email:</Text>
+      
       <CustomInput
         name = "Email"
         secure = {false} 
       />
-       <Button mode = 'contained-tonal' style = {{backgroundColor : MD3Colors.primary20, marginTop : 20}} onPress={() => navigation.navigate("enterCode")}>
-                <Text style = {{color : 'white'}}>Send me a verification code</Text>
-        </Button>
+      
+      <CustomButton
+        name= 'Send me a verification code'
+        onPress = {() => navigation.navigate("ResetPassword")}
+      />
+      
     </View>
   );
 };
