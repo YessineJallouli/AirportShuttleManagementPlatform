@@ -37,7 +37,7 @@ const App = () => {
               component={ForgotPasswordScreen} />
              <Stack.Screen 
               name="ResetPassword" 
-              component={ResetPasswordScreen} />
+              component={ResetPasswordScreen} /> 
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>

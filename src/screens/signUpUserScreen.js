@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import {ScrollView, View, Text, StyleSheet, Dimensions, FlatList} from 'react-native';
+import { TouchableOpacity, ScrollView, View, Text, StyleSheet } from 'react-native';
 import { IconButton, MD3Colors } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {CountryPicker} from "react-native-country-codes-picker";
 
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -26,6 +27,9 @@ const SignUpUserScreen = ({navigation}) =>{
     const [colorCond4, setColorCond4] = useState('black');
     const [colorCond5, setColorCond5] = useState('black');
     const [colorCond6, setColorCond6] = useState('black');
+
+    const [show, setShow] = useState(false);
+    const [country, setCountry] = useState('');
     
     const handlePwdChange = (value) => {
         setPwdValue(value);
@@ -36,12 +40,11 @@ const SignUpUserScreen = ({navigation}) =>{
         setColorCond5(isContainsSymbol(value) ? 'green' : 'red');
         setColorCond6(isValidLength(value) ? 'green' : 'red');
     };
-
     
     return(
         
-        <ScrollView style={{
-        }} contentContainerStyle={{
+        <ScrollView automaticallyAdjustKeyboardInsets={true}
+            contentContainerStyle={{
             alignItems: 'center',
         }}
         >
@@ -109,6 +112,40 @@ const SignUpUserScreen = ({navigation}) =>{
             {/* shows only when passwords don't match*/}
 
             <DatePicker></DatePicker>
+
+            <Text style= {{marginBottom : 10}}>Tap on the Box below to enter your country</Text>
+            
+            <View style={{width: '80%', borderWidth : 1, borderColor : 'rgb(124, 117, 126)', marginBottom : 20}}>
+                <TouchableOpacity
+                    onPress={() => setShow(true)}
+                    style={{
+                    height: 45,
+                    backgroundColor: 'rgb(255, 251, 255)',
+                    paddingTop: 15,
+                    paddingLeft : 15,
+                }}
+                >
+                
+                    <Text 
+                        style={{ fontSize : 16}}>
+                        {country}
+                    </Text>
+
+                </TouchableOpacity>
+                
+                <CountryPicker
+                    style={{
+                        modal: {
+                            height: 500,
+                    }}}
+                    show={show}
+                    pickerButtonOnPress={(item) => { 
+                    setCountry(item.flag + ' ' + item.name["en"]);
+                    setShow(false);
+                    }}
+                />
+            </View>
+
 
             <CustomButton
                 name = 'Sign Up'

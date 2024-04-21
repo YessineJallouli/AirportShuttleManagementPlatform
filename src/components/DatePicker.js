@@ -55,7 +55,7 @@ const DatePicker = () => {
 const styles = StyleSheet.create({
     textBox : {
         width : '80%',
-        marginBottom : 10
+        marginBottom : 15
     }
 });
 
