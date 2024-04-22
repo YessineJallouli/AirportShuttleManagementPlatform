@@ -6,7 +6,7 @@ import SignInScreen from "./src/screens/signInScreen";
 import SignUpOptionsScreen from "./src/screens/signUpOptionsScreen";
 import SignUpUserScreen from "./src/screens/signUpUserScreen";
 import ForgotPasswordScreen from "./src/screens/forgotPassword";
-import ResetPasswordScreen from "./src/screens/resetPasswordScreen"
+import ResetPasswordScreen from "./src/screens/resetPasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,22 +22,17 @@ const App = () => {
               contentStyle: { backgroundColor: "#FFFFFF" },
             }}
           >
-            <Stack.Screen 
-              name="SignIn" 
-              component={SignInScreen} />
+            <Stack.Screen name="SignIn" component={SignInScreen} />
             <Stack.Screen
               name="SignUpOptions"
               component={SignUpOptionsScreen}
             />
-            <Stack.Screen 
-              name="SignUpUser" 
-              component={SignUpUserScreen} />
-            <Stack.Screen 
-              name="ForgotPwd" 
-              component={ForgotPasswordScreen} />
-             <Stack.Screen 
-              name="ResetPassword" 
-              component={ResetPasswordScreen} /> 
+            <Stack.Screen name="SignUpUser" component={SignUpUserScreen} />
+            <Stack.Screen name="ForgotPwd" component={ForgotPasswordScreen} />
+            <Stack.Screen
+              name="ResetPassword"
+              component={ResetPasswordScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
