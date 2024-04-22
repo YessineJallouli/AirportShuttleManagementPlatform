@@ -57,6 +57,7 @@ const SignUpOptionsScreen = ({ navigation }) => {
           if (isUserPressed) {
             navigation.navigate("SignUpUser");
           } else {
+              navigation.navigate("SignUpDriver")
           }
         }}
       >

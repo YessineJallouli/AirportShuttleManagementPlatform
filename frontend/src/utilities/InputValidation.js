@@ -30,3 +30,7 @@ export const isValidLength = (val) => {
   const regex = /^.{8,16}$/;
   return regex.test(val);
 };
+
+export const phoneNumberRegex =
+   /^\d{8}$/;
+
