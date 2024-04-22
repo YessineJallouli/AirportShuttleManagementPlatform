@@ -21,7 +21,7 @@ import {
   isContainsNumber,
   isContainsSymbol,
   isValidLength,
-} from "../Utilities/InputValidation";
+} from "../utilities/InputValidation";
 import MainHeader from "../components/MainHeader";
 import PressableText from "../components/PressableText";
 
