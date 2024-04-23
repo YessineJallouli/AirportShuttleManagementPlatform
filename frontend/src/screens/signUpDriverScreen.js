@@ -13,6 +13,8 @@ import { CountryPicker } from "react-native-country-codes-picker";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import DatePicker from "../components/DatePicker";
+import ImageUpload from "../components/ImageUpload"
+
 import {
     emailRegex,
     isContainsLowercase,
@@ -141,6 +143,20 @@ const SignUpDriverScreen = ({ navigation }) => {
                     </Text>
                 )}
             </View>
+
+            <ImageUpload
+                name="Identity Card picture"
+            />
+
+            <ImageUpload
+                name="Driving license picture"
+            />
+
+            <ImageUpload
+                name="Car registration document picture"
+            />
+
+
 
 
             <CustomButton
