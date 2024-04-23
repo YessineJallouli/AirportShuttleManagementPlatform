@@ -29,3 +29,15 @@ Implement Driver Sign Up Screen
 We will use mongoDB and Express.js
 
 TODO : research about mongoDB and Express.js 
+
+
+
+**TO DO list : (23-04-24)  **
+
+* Do a research about a free chat system **(YOUSSFI)**
+* Fix email validator **(HAMA)**
+* Digit keyboard for phone number and verification code **(YESSINE)**
+* Implement Image upload validator  **(YESSINE)**
+* Password validator for reset password **(YESSINE)**
+* MVC design pattern for back-end **(ALL)**
+
