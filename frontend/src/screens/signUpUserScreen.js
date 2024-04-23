@@ -64,7 +64,7 @@ const SignUpUserScreen = ({ navigation }) => {
         name="Email"
         secure={false}
         value={emailValue}
-        setValue={setEmail}
+        onChange={setEmail}
       />
       {/* shows only when the Email is not valid */}
       <View style={{ width: "80%" }}>
@@ -81,7 +81,10 @@ const SignUpUserScreen = ({ navigation }) => {
         name="Password"
         secure={true}
         value={pwdValue}
-        onChange={handlePwdChange}
+        onChange={(text) => {
+          setPwdValue(text);
+          handlePwdChange(text);
+        }}
       />
       <View style={{ marginBottom: 10, width: "80%" }}>
         {[
@@ -101,7 +104,7 @@ const SignUpUserScreen = ({ navigation }) => {
         name="Confirm Password"
         secure={true}
         value={confPwdValue}
-        setValue={setConfPwdValue}
+        onChange={setConfPwdValue}
       />
       {/* shows only when passwords don't match*/}
       <View style={{ width: "80%" }}>
@@ -168,7 +171,7 @@ const SignUpUserScreen = ({ navigation }) => {
         <PressableText
           name="Sign In"
           textStyle={styles.signInText}
-          onPress={() => navigation.navigate("signInScreen")}
+          onPress={() => navigation.navigate("SignIn")}
         />
       </View>
     </ScrollView>

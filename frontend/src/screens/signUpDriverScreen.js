@@ -1,14 +1,12 @@
 import { useState } from "react";
 import {
-    TouchableOpacity,
     ScrollView,
     View,
     Text,
-    StyleSheet,
+    StyleSheet
 } from "react-native";
 import { IconButton, MD3Colors } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { CountryPicker } from "react-native-country-codes-picker";
 
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
@@ -45,11 +43,7 @@ const SignUpDriverScreen = ({ navigation }) => {
 
     // phone number states
     const [phoneValid, setPhoneValid] = useState(true);
-    const [phoneValue, setPhoneValue] = useState("222222222");
-
-
-    const [show, setShow] = useState(false);
-    const [country, setCountry] = useState("");
+    const [phoneValue, setPhoneValue] = useState("");
 
     const handlePwdChange = (value) => {
         setPwdValue(value);
@@ -77,7 +71,7 @@ const SignUpDriverScreen = ({ navigation }) => {
                 name="Email"
                 secure={false}
                 value={emailValue}
-                setValue={setEmail}
+                onChange={setEmail}
             />
             {/* shows only when the Email is not valid */}
             <View style={{ width: "80%" }}>
@@ -94,7 +88,10 @@ const SignUpDriverScreen = ({ navigation }) => {
                 name="Password"
                 secure={true}
                 value={pwdValue}
-                onChange={handlePwdChange}
+                onChange={(text) => {
+                    setPwdValue(text);
+                    handlePwdChange(text);
+                  }}
             />
 
             <View style={{ marginBottom: 10, width: "80%" }}>
@@ -115,7 +112,7 @@ const SignUpDriverScreen = ({ navigation }) => {
                 name="Confirm Password"
                 secure={true}
                 value={confPwdValue}
-                setValue={setConfPwdValue}
+                onChange={setConfPwdValue}
             />
             {/* shows only when passwords don't match*/}
             <View style={{ width: "80%" }}>
@@ -143,7 +140,7 @@ const SignUpDriverScreen = ({ navigation }) => {
                     </Text>
                 )}
             </View>
-
+            <Text style = {{width : "80%", textAlign: "center", margin: 10}}>Tap on the boxes below to upload the necessary documents</Text>
             <ImageUpload
                 name="Identity Card picture"
             />
@@ -180,7 +177,7 @@ const SignUpDriverScreen = ({ navigation }) => {
                 <PressableText
                     name="Sign In"
                     textStyle={styles.signInText}
-                    onPress={() => navigation.navigate("signInScreen")}
+                    onPress={() => navigation.navigate("SignIn")}
                 />
             </View>
         </ScrollView>

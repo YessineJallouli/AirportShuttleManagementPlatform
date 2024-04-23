@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Button, Text, View, StyleSheet } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { useState } from "react";
+import { Text, View, StyleSheet, Pressable } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 const ImageUpload = (props) => {
     const [uploadMessage, setUploadMessage] = useState("");
@@ -11,43 +11,42 @@ const ImageUpload = (props) => {
             allowsEditing: false,
             quality: 1,
         });
-        console.log(result.assets[0])
+        console.log(result.assets[0]);
         if (!result.canceled) {
-            props.data = result.assets[0]
-            let fileName = result.assets[0].fileName
+            props.data = result.assets[0];
+            let fileName = result.assets[0].fileName;
             setUploadMessage(fileName + " is uploaded");
         }
     };
 
     return (
         <View style={styles.container}>
-            <View style={styles.buttonContainer}>
-                <Button
-                    title= {props.name}
-                    onPress={pickImage}
-                    color="#f0bbed"
-                />
-            </View>
-            {uploadMessage !== "" && <Text style={styles.message}>{uploadMessage}</Text> }
+            <Pressable onPress={pickImage} style={styles.buttonContainer}>
+                <Text>{props.name}</Text>
+            </Pressable>
+            {uploadMessage !== "" && (
+                <Text style={{ marginTop: 5 }}>{uploadMessage}</Text>
+            )}
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
-        width: 3000,
-        // flex: 1,
+        width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        paddingVertical: 4,
+        marginBottom: 20,
     },
     buttonContainer: {
-        paddingVertical: 4,
-        width: 290,
-    },
-    image: {
-        width: 200,
-        height: 200,
+        paddingTop: 15,
+        paddingBottom: 15,
+        paddingLeft: 15,
+        width: "80%",
+        borderWidth: 1,
+        borderColor: "rgb(150,146,152)",
+        borderRadius: 4,
+        backgroundColor: "rgb(255, 251, 255)",
     },
 });
 export default ImageUpload;

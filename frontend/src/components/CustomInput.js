@@ -9,6 +9,7 @@ const CustomInput = (props) => {
         mode="outlined"
         secureTextEntry={props.secure}
         onChangeText={props.onChange}
+        value = {props.value}
       />
     </View>
   );
