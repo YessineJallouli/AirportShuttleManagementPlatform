@@ -36,6 +36,24 @@ const SignUpDriverScreen = ({ navigation }) => {
         setPhoneValue(value);
     };
 
+    // pictures states
+
+    const [identityCard, setIdentityCard] = useState(null);
+    const [drivingLicense, setDrivingLicense] = useState(null);
+    const [carRegistration, setCarRegistration] = useState(null);
+
+    const [picturesValid, setPicturesValid] = useState(true);
+
+    const handleIdentityCardData = (data) => {
+        setIdentityCard(data);
+    };
+    const handleDrivingLicenseData = (data) => {
+        setDrivingLicense(data);
+    };
+    const handleCarRegistrationData = (data) => {
+        setCarRegistration(data);
+    };
+
     return (
         <ScrollView
             automaticallyAdjustKeyboardInsets={true}
@@ -108,21 +126,43 @@ const SignUpDriverScreen = ({ navigation }) => {
                     </Text>
                 )}
             </View>
+
+
+
             <Text style={{ width: "80%", textAlign: "center", margin: 10 }}>
                 Tap on the boxes below to upload the necessary documents
             </Text>
-            <ImageUpload name="Identity Card picture" />
 
-            <ImageUpload name="Driving license picture" />
+            <ImageUpload
+                name="Identity Card picture"
+                data={handleIdentityCardData}
+            />
 
-            <ImageUpload name="Car registration document picture" />
+            <ImageUpload
+                name="Driving license picture"
+                data={handleDrivingLicenseData}
+            />
+
+            <ImageUpload
+                name="Car registration document picture"
+                data={handleCarRegistrationData}
+            />
+
+            <View style={{ width: "80%" }}>
+                {!picturesValid && (
+                    <Text style={{ fontWeight: "bold", color: "red" }}>
+                        Please upload all the documents
+                    </Text>
+                )}
+            </View>
 
             <CustomButton
                 name="Sign Up"
                 onPress={() => {
                     setEmailValid(emailRegex.test(emailValue));
-                    setPwdMatch(pwdValue == confPwdValue);
+                    setPwdMatch(pwdValue === confPwdValue);
                     setPhoneValid(phoneNumberRegex.test(phoneValue));
+                    setPicturesValid(identityCard != null && drivingLicense != null && carRegistration != null);
                 }}
             />
 

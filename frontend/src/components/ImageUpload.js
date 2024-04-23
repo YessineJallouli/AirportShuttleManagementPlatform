@@ -13,7 +13,7 @@ const ImageUpload = (props) => {
         });
         console.log(result.assets[0]);
         if (!result.canceled) {
-            props.data = result.assets[0];
+            props.data(result.assets[0]);
             let fileName = result.assets[0].fileName;
             setUploadMessage(fileName + " is uploaded");
         }
