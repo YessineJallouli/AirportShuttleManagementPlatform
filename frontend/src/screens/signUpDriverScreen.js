@@ -1,17 +1,11 @@
 import { useState } from "react";
-import {
-    ScrollView,
-    View,
-    Text,
-    StyleSheet
-} from "react-native";
+import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { IconButton, MD3Colors } from "react-native-paper";
-import Icon from "react-native-vector-icons/FontAwesome";
 
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import DatePicker from "../components/DatePicker";
-import ImageUpload from "../components/ImageUpload"
+import ImageUpload from "../components/ImageUpload";
 
 import {
     emailRegex,
@@ -25,6 +19,7 @@ import {
 } from "../utilities/InputValidation";
 import MainHeader from "../components/MainHeader";
 import PressableText from "../components/PressableText";
+import PwdValidUI from "../components/pwdValidUI";
 
 const SignUpDriverScreen = ({ navigation }) => {
     const [emailValue, setEmail] = useState("");
@@ -33,31 +28,13 @@ const SignUpDriverScreen = ({ navigation }) => {
     const [emailValid, setEmailValid] = useState(true);
     const [pwdMatch, setPwdMatch] = useState(true);
 
-    const [colorCond1, setColorCond1] = useState("black");
-    const [colorCond2, setColorCond2] = useState("black");
-    const [colorCond3, setColorCond3] = useState("black");
-    const [colorCond4, setColorCond4] = useState("black");
-    const [colorCond5, setColorCond5] = useState("black");
-    const [colorCond6, setColorCond6] = useState("black");
-
-
     // phone number states
     const [phoneValid, setPhoneValid] = useState(true);
     const [phoneValue, setPhoneValue] = useState("");
 
-    const handlePwdChange = (value) => {
-        setPwdValue(value);
-        setColorCond1(isWhiteSpace(value) ? "red" : "green");
-        setColorCond2(isContainsLowercase(value) ? "green" : "red");
-        setColorCond3(isContainsUppercase(value) ? "green" : "red");
-        setColorCond4(isContainsNumber(value) ? "green" : "red");
-        setColorCond5(isContainsSymbol(value) ? "green" : "red");
-        setColorCond6(isValidLength(value) ? "green" : "red");
-    };
-
     const handlePhoneChange = (value) => {
         setPhoneValue(value);
-    }
+    };
 
     return (
         <ScrollView
@@ -88,26 +65,17 @@ const SignUpDriverScreen = ({ navigation }) => {
                 name="Password"
                 secure={true}
                 value={pwdValue}
-                onChange={(text) => {
-                    setPwdValue(text);
-                    handlePwdChange(text);
-                  }}
+                onChange={setPwdValue}
             />
 
-            <View style={{ marginBottom: 10, width: "80%" }}>
-                {[
-                    { text: "must not contain whitespaces", color: colorCond1 },
-                    { text: "at least one lower case character", color: colorCond2 },
-                    { text: "at least one uppercase case character", color: colorCond3 },
-                    { text: "at least one digit", color: colorCond4 },
-                    { text: "at least one special character", color: colorCond5 },
-                    { text: "length must be between 8 and 16", color: colorCond6 },
-                ].map((condition, index) => (
-                    <Text key={index} style={{ color: condition.color }}>
-                        <Icon name="check" size={20} /> {condition.text}
-                    </Text>
-                ))}
-            </View>
+            <PwdValidUI
+                isWhiteSpace={isWhiteSpace(pwdValue)}
+                isContainsUppercase={isContainsUppercase(pwdValue)}
+                isContainsLowercase={isContainsLowercase(pwdValue)}
+                isContainsNumber={isContainsNumber(pwdValue)}
+                isContainsSymbol={isContainsSymbol(pwdValue)}
+                isValidLength={isValidLength(pwdValue)}
+            />
             <CustomInput
                 name="Confirm Password"
                 secure={true}
@@ -129,8 +97,8 @@ const SignUpDriverScreen = ({ navigation }) => {
             <CustomInput
                 name="Phone Number"
                 secure={false}
-                value = {phoneValue}
-                onChange = {handlePhoneChange}
+                value={phoneValue}
+                onChange={handlePhoneChange}
             />
 
             <View style={{ width: "80%" }}>
@@ -140,21 +108,14 @@ const SignUpDriverScreen = ({ navigation }) => {
                     </Text>
                 )}
             </View>
-            <Text style = {{width : "80%", textAlign: "center", margin: 10}}>Tap on the boxes below to upload the necessary documents</Text>
-            <ImageUpload
-                name="Identity Card picture"
-            />
+            <Text style={{ width: "80%", textAlign: "center", margin: 10 }}>
+                Tap on the boxes below to upload the necessary documents
+            </Text>
+            <ImageUpload name="Identity Card picture" />
 
-            <ImageUpload
-                name="Driving license picture"
-            />
+            <ImageUpload name="Driving license picture" />
 
-            <ImageUpload
-                name="Car registration document picture"
-            />
-
-
-
+            <ImageUpload name="Car registration document picture" />
 
             <CustomButton
                 name="Sign Up"
