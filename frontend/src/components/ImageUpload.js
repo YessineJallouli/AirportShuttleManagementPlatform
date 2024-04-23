@@ -1,23 +1,21 @@
 import { useState } from 'react';
-import { Button, Image, View, StyleSheet } from 'react-native';
+import { Button, Text, View, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 const ImageUpload = (props) => {
-    const [image, setImage] = useState(null);
-
+    const [uploadMessage, setUploadMessage] = useState("");
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: false,
-            // aspect: [4, 3],
             quality: 1,
         });
-
-        console.log(result);
-
+        console.log(result.assets[0])
         if (!result.canceled) {
-            setImage(result.assets[0].uri);
+            props.data = result.assets[0]
+            let fileName = result.assets[0].fileName
+            setUploadMessage(fileName + " is uploaded");
         }
     };
 
@@ -27,9 +25,10 @@ const ImageUpload = (props) => {
                 <Button
                     title= {props.name}
                     onPress={pickImage}
+                    color="#f0bbed"
                 />
             </View>
-            {image && <Image source={{ uri: image }} style={styles.image} />}
+            {uploadMessage !== "" && <Text style={styles.message}>{uploadMessage}</Text> }
         </View>
     );
 }
