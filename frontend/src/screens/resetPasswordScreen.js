@@ -20,7 +20,11 @@ const ResetPasswordScreen = () => {
         <View style={styles.container}>
             <Text style={styles.title}>Enter the sent code</Text>
 
-            <CustomInput name="Enter Code" secure={false} />
+            <CustomInput
+                name="Enter Code"
+                secure={false}
+                keyboardType = "numeric"
+            />
 
             <CustomInput
                 name="Enter new Password"

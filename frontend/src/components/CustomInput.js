@@ -10,6 +10,7 @@ const CustomInput = (props) => {
         secureTextEntry={props.secure}
         onChangeText={props.onChange}
         value = {props.value}
+        keyboardType={props.keyboardType}
       />
     </View>
   );

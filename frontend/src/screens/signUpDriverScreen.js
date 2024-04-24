@@ -117,6 +117,7 @@ const SignUpDriverScreen = ({ navigation }) => {
                 secure={false}
                 value={phoneValue}
                 onChange={handlePhoneChange}
+                keyboardType = "numeric"
             />
 
             <View style={{ width: "80%" }}>
