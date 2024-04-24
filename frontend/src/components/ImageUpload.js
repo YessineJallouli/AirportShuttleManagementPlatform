@@ -11,11 +11,17 @@ const ImageUpload = (props) => {
             allowsEditing: false,
             quality: 1,
         });
-        console.log(result.assets[0]);
+
         if (!result.canceled) {
-            props.data(result.assets[0]);
-            let fileName = result.assets[0].fileName;
-            setUploadMessage(fileName + " is uploaded");
+            if (result.assets[0].filesize > 5*1024*1024) {
+                props.data(null);
+                setUploadMessage(props.name + " size should not exceed 5 Mo");
+            }
+            else {
+                props.data(result.assets[0]);
+                let fileName = result.assets[0].fileName;
+                setUploadMessage(fileName + " is uploaded");
+            }
         }
     };
 
@@ -25,7 +31,12 @@ const ImageUpload = (props) => {
                 <Text>{props.name}</Text>
             </Pressable>
             {uploadMessage !== "" && (
-                <Text style={{ marginTop: 5 }}>{uploadMessage}</Text>
+                <Text style={{
+                    marginTop: 5,
+                    color: uploadMessage.includes("size should not exceed 5 Mo") ? 'red' : 'black',
+                    fontWeight: uploadMessage.includes("size should not exceed 5 Mo") ? 'bold' : 'normal'}}>
+                    {uploadMessage}
+                </Text>
             )}
         </View>
     );

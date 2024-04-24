@@ -163,6 +163,11 @@ const SignUpDriverScreen = ({ navigation }) => {
                     setPwdMatch(pwdValue === confPwdValue);
                     setPhoneValid(phoneNumberRegex.test(phoneValue));
                     setPicturesValid(identityCard != null && drivingLicense != null && carRegistration != null);
+
+                    console.log(identityCard)
+                    console.log(drivingLicense)
+                    console.log(carRegistration)
+
                 }}
             />
 
