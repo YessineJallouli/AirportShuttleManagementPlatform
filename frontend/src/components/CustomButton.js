@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: MD3Colors.primary20,
     width: "70%",
+    marginTop : 10,
     marginBottom: 20,
   },
 });

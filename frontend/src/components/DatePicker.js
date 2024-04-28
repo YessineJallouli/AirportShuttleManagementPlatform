@@ -3,7 +3,7 @@ import { useState } from "react";
 import { View, Pressable, Platform, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
 
-const DatePicker = () => {
+const DatePicker = (props) => {
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState("");
@@ -19,6 +19,8 @@ const DatePicker = () => {
 
       toggleDatePicker();
       setDateOfBirth(currentDate.toDateString());
+      props.handle(dateOfBirth);
+      
     } else {
       toggleDatePicker();
     }
