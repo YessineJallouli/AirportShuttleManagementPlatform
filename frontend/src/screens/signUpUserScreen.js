@@ -49,7 +49,7 @@ const SignUpUserScreen = ({ navigation }) => {
 
     const [visibleExist, setVisibleExist] = useState(false);
     const [visibleCreated, setVisibleCreated] = useState(false);
-    const [visibleError, setVisibleError] = useState(true);
+    const [visibleError, setVisibleError] = useState(false);
 
     return (
         <View style={{ flex: 1 }}>
