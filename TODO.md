@@ -50,6 +50,7 @@ TODO : research about mongoDB and Express.js
 * how to retrieve data from data picker **(Yacine)**
 * implement sign up screen of the driver **(Yacine)**
 * Forgot password system **(Youssfi)**
+* implement an email confirmation when user/driver register **(Youssfi)**
  
 
 
