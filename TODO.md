@@ -32,7 +32,7 @@ TODO : research about mongoDB and Express.js
 
 
 
-**TO DO list : (23-04-24)  **
+**TO DO list : (23-04-24)**
 
 * Do a research about a free chat system **(YOUSSFI)**
 * Fix email validator **(HAMA)**
@@ -40,4 +40,16 @@ TODO : research about mongoDB and Express.js
 * Implement Image upload validator  **(YESSINE)**
 * Password validator for reset password **(YESSINE)**
 * MVC design pattern for back-end **(ALL)**
+
+
+**TO DO list : (29-04-24)**
+
+* sign in screen user and driver authentification (Mohamed)
+* How to sign in and register using google api (Yacine)
+* sign in options in the sign in screen (Mohamed)
+* how to retrieve data from data picker (Yacine)
+* implement sign up screen of the driver (Yacine)
+* Forgot password system (Youssfi)
+ 
+
 

@@ -19,7 +19,7 @@ const DatePicker = (props) => {
 
       toggleDatePicker();
       setDateOfBirth(currentDate.toDateString());
-      props.handle(dateOfBirth);
+      props.handle(currentDate.toDateString());
       
     } else {
       toggleDatePicker();
