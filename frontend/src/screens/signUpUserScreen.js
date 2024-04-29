@@ -211,14 +211,15 @@ const SignUpUserScreen = ({ navigation }) => {
                                     console.log(response.data.verdict);
                                     if (response.data.verdict === "exist") {
                                         setVisibleExist(true);
-                                    } else if (response.data.verdict === "created") {
+                                    } else if (
+                                        response.data.verdict === "created"
+                                    ) {
                                         setVisibleCreated(true);
                                     }
                                 })
                                 .catch((error) => {
                                     setVisibleError(true);
                                     console.error("Error:", error);
-
                                 });
                         }
                     }}
@@ -243,25 +244,24 @@ const SignUpUserScreen = ({ navigation }) => {
                 visible={visibleExist}
                 setVisible={setVisibleExist}
                 text={"Email entered already exists !"}
-                handlePress = {() => setVisibleExist(false)}
-                buttonText = "Close"
+                handlePress={() => setVisibleExist(false)}
+                buttonText="Close"
             />
 
             <CustomModal
                 visible={visibleCreated}
                 setVisible={setVisibleCreated}
                 text={"You've registered successfully !"}
-                handlePress = {() => navigation.navigate("SignIn")}
-                buttonText = "Login In"
+                handlePress={() => navigation.navigate("SignIn")}
+                buttonText="Login In"
             />
-
 
             <CustomModal
                 visible={visibleError}
                 setVisible={setVisibleError}
                 text={"An error has occured try again !"}
-                handlePress = {() => setVisibleError(false)}
-                buttonText = "Close"
+                handlePress={() => setVisibleError(false)}
+                buttonText="Close"
             />
         </View>
     );

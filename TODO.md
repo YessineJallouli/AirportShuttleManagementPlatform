@@ -45,11 +45,11 @@ TODO : research about mongoDB and Express.js
 **TO DO list : (29-04-24)**
 
 * sign in screen user and driver authentification (Mohamed)
-* How to sign in and register using google api (Yacine)
-* sign in options in the sign in screen (Mohamed)
-* how to retrieve data from data picker (Yacine)
-* implement sign up screen of the driver (Yacine)
-* Forgot password system (Youssfi)
+* How to sign in and register using google api **(Yacine)**
+* sign in options in the sign in screen **(Mohamed)**
+* how to retrieve data from data picker **(Yacine)**
+* implement sign up screen of the driver **(Yacine)**
+* Forgot password system **(Youssfi)**
  
 
 

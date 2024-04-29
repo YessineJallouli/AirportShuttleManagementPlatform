@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { IconButton, MD3Colors } from "react-native-paper";
+import { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { IconButton, MD3Colors, RadioButton } from "react-native-paper";
 
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
@@ -7,73 +8,100 @@ import PressableText from "../components/PressableText";
 import MainHeader from "../components/MainHeader";
 
 const SignInScreen = ({ navigation }) => {
-  return (
-    <View style={styles.parentContainer}>
-      <MainHeader />
+    const [checked, setChecked] = useState("user");
+    return (
+        <View style={styles.parentContainer}>
+            <MainHeader/>
+            <View style={styles.checkBoxesContainer}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <RadioButton
+                        value="user"
+                        status={checked === "user" ? "checked" : "unchecked"}
+                        onPress={() => setChecked("user")}
+                    />
+                    <Text>User</Text>
+                </View>
 
-      <CustomInput name="Email" secure={false} />
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <RadioButton
+                        value="driver"
+                        status={checked === "driver" ? "checked" : "unchecked"}
+                        onPress={() => setChecked("driver")}
+                    />
 
-      <CustomInput name="password" secure={true} />
+                    <Text>Driver</Text>
+                </View>
+            </View>
 
-      <View style={styles.forgetPwdContainer}>
-        <PressableText
-          name="Forgot Password ?"
-          textStyle={styles.forgetPwdText}
-          onPress={() => navigation.navigate("ForgotPwd")}
-        />
-      </View>
+            <CustomInput name="Email" secure={false} />
 
-      <CustomButton
-        name="Sign In"
-        onPress={() => {
-          console.log("pressed");
-        }}
-      />
+            <CustomInput name="password" secure={true} />
 
-      <Text>Or Login With</Text>
+            <View style={styles.forgetPwdContainer}>
+                <PressableText
+                    name="Forgot Password ?"
+                    textStyle={styles.forgetPwdText}
+                    onPress={() => navigation.navigate("ForgotPwd")}
+                />
+            </View>
 
-      <IconButton
-        icon="google"
-        iconColor={MD3Colors.primary20}
-        size={50}
-        onPress={() => console.log("Pressed")}
-      ></IconButton>
+            <CustomButton
+                name="Sign In"
+                onPress={() => {
+                    console.log("pressed");
+                }}
+            />
 
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Text>You don't have an account? </Text>
-        <PressableText
-          name="Sign Up"
-          textStyle={styles.signUpText}
-          onPress={() => navigation.navigate("SignUpOptions")}
-        />
-      </View>
-    </View>
-  );
+            <Text>Or Login With</Text>
+
+            <IconButton
+                icon="google"
+                iconColor={MD3Colors.primary20}
+                size={50}
+                onPress={() => console.log("Pressed")}
+            ></IconButton>
+
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text>You don't have an account? </Text>
+                <PressableText
+                    name="Sign Up"
+                    textStyle={styles.signUpText}
+                    onPress={() => navigation.navigate("SignUpOptions")}
+                />
+            </View>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  parentContainer: {
-    flex: 1,
-    alignItems: "center",
-    width: "100%",
-    padding: "5%",
-  },
+    parentContainer: {
+        flex: 1,
+        alignItems: "center",
+        width: "100%",
+        padding: "5%",
+    },
 
-  forgetPwdContainer: {
-    alignItems: "flex-end",
-    width: "80%",
-    marginBottom: 20,
-  },
+    checkBoxesContainer: {
+        width: "80%",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
 
-  forgetPwdText: {
-    color: MD3Colors.error50,
-    fontSize: 15,
-  },
+    forgetPwdContainer: {
+        alignItems: "flex-end",
+        width: "80%",
+        marginBottom: 20,
+    },
 
-  signUpText: {
-    color: MD3Colors.primary30,
-    fontWeight: "bold",
-  },
+    forgetPwdText: {
+        color: MD3Colors.error50,
+        fontSize: 15,
+    },
+
+    signUpText: {
+        color: MD3Colors.primary30,
+        fontWeight: "bold",
+    },
 });
 
 export default SignInScreen;
