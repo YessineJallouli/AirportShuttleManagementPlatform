@@ -172,7 +172,8 @@ const SignUpUserScreen = ({ navigation }) => {
                 <CustomButton
                     name="Sign Up"
                     onPress={() => {
-                        setEmailValid(emailRegex.test(email));
+                        const isEmailValid = emailRegex.test(email);
+                        setEmailValid(isEmailValid);
                         setfirstNameValid(firstName !== "");
                         setLastNameValid(lastName !== "");
                         setPwdMatch(pwd === confPwd);
@@ -186,13 +187,13 @@ const SignUpUserScreen = ({ navigation }) => {
                             isContainsSymbol(pwd) &&
                             isValidLength(pwd);
                         if (
-                            emailValid &&
-                            firstNameValid &&
-                            lastNameValid &&
+                            isEmailValid &&
+                            firstName !== "" &&
+                            lastName !== "" &&
                             pwdValid &&
-                            pwdMatch &&
-                            dateOfBirthValid &&
-                            countryValid
+                            pwd === confPwd &&
+                            dateOfBirth !== "" &&
+                            country !== ""
                         ) {
                             const userData = {
                                 email: email,
