@@ -10,6 +10,7 @@ const ImageUpload = (props) => {
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: false,
             quality: 1,
+            base64:true,
         });
 
         if (!result.canceled) {

@@ -13,10 +13,9 @@ const DatePicker = (props) => {
   };
 
   const onChange = ({ type }, selectedDate) => {
-    if (type == "set") {
+    if (type === "set") {
       const currentDate = selectedDate;
       setDate(currentDate);
-
       toggleDatePicker();
       setDateOfBirth(currentDate.toDateString());
       props.handle(currentDate.toDateString());

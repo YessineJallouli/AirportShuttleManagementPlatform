@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="001adedd-dd30-43d6-8a6f-00d8e836bebc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/screens/signUpUserScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/signUpUserScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DatePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ImageUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ImageUpload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/signUpDriverScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/signUpDriverScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +36,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Node.js.signUpDriverScreen.js.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.signUpScreen.js.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -66,6 +71,16 @@
       <workItem from="1713913387930" duration="900000" />
       <workItem from="1713915656187" duration="1056000" />
       <workItem from="1713917187421" duration="3789000" />
+      <workItem from="1714444320854" duration="881000" />
+      <workItem from="1714446051936" duration="253000" />
+      <workItem from="1714480305479" duration="2661000" />
+      <workItem from="1714483232392" duration="310000" />
+      <workItem from="1714483628005" duration="1874000" />
+      <workItem from="1714485519734" duration="19000" />
+      <workItem from="1714485732228" duration="365000" />
+      <workItem from="1714486807115" duration="35000" />
+      <workItem from="1714500975669" duration="2115000" />
+      <workItem from="1714513067180" duration="1406000" />
     </task>
     <servers />
   </component>
