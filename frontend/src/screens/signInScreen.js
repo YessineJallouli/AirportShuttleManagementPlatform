@@ -8,6 +8,7 @@ import CustomButton from "../components/CustomButton";
 import PressableText from "../components/PressableText";
 import MainHeader from "../components/MainHeader";
 import CustomModal from "../components/CustomModal";
+import {API_HOST} from '@env';
 
 const SignInScreen = ({ navigation }) => {
     const [checked, setChecked] = useState("user");
@@ -71,10 +72,10 @@ const SignInScreen = ({ navigation }) => {
                         password: password,
                     };
                     let route;
-                    if(checked == "user"){
-                       route = "http://192.168.100.195:8000/api/users/login";      
+                    if(checked === "user"){
+                       route = `${API_HOST}/api/users/login`;
                     }else{
-                        route = "http://192.168.100.195:8000/api/drivers/login"
+                        route = `${API_HOST}/api/drivers/login`;
                     }
                     axios
                         .post(
@@ -87,7 +88,7 @@ const SignInScreen = ({ navigation }) => {
                                 setVisibleLogged(true);
                             } else if (response.data.verdict === "notExist") {
                                 setVisibleNotExist(true);
-                            } else if (response.data.verdict == "notMatch") {
+                            } else if (response.data.verdict === "notMatch") {
                                 setVisibleNotMatch(true);
                             } else {
                                 setVisibleError(true);
