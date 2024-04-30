@@ -28,6 +28,7 @@ import PressableText from "../components/PressableText";
 import PwdValidUI from "../components/pwdValidUI";
 import ErrorText from "../components/ErrorText";
 import CustomModal from "../components/CustomModal";
+import {API_HOST} from '@env';
 
 const SignUpUserScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState("");
@@ -205,11 +206,12 @@ const SignUpUserScreen = ({ navigation }) => {
                             };
                             axios
                                 .post(
-                                    "http://192.168.100.195:8000/api/users/register",
+                                    `${API_HOST}/api/users/register`,
                                     userData
                                 )
                                 .then((response) => {
                                     console.log(response.data.verdict);
+
                                     if (response.data.verdict === "exist") {
                                         setVisibleExist(true);
                                     } else if (
