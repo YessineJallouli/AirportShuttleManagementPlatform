@@ -9,8 +9,8 @@ import bodyParser from 'body-parser';
 
 const app = express();
 
-app.use(bodyParser.json({ limit: '5mb' }));
-app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
+//app.use(bodyParser.json({ limit: '5mb' }));
+//app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
 
 mongoose.connect("mongodb://localhost:27017/AirportShuttleManagementDb")
 .then(() => app.listen(8000))

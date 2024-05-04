@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { IconButton, MD3Colors, RadioButton } from "react-native-paper";
 import axios from "axios";
 
@@ -8,7 +8,7 @@ import CustomButton from "../components/CustomButton";
 import PressableText from "../components/PressableText";
 import MainHeader from "../components/MainHeader";
 import CustomModal from "../components/CustomModal";
-import {API_HOST} from '@env';
+import {BASE_URL} from '@env';
 
 const SignInScreen = ({ navigation }) => {
     const [checked, setChecked] = useState("user");
@@ -19,11 +19,17 @@ const SignInScreen = ({ navigation }) => {
     const [visibleLogged, setVisibleLogged] = useState(false);
     const [visibleError, setVisibleError] = useState(false);
     return (
+        <ScrollView
+                automaticallyAdjustKeyboardInsets={true}
+                contentContainerStyle={{
+                    alignItems: "center",
+                }}
+            >
         <View style={styles.parentContainer}>
             <MainHeader />
             <View style={styles.checkBoxesContainer}>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <RadioButton
+                    <RadioButton.Android
                         value="user"
                         status={checked === "user" ? "checked" : "unchecked"}
                         onPress={() => setChecked("user")}
@@ -32,7 +38,7 @@ const SignInScreen = ({ navigation }) => {
                 </View>
 
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <RadioButton
+                    <RadioButton.Android
                         value="driver"
                         status={checked === "driver" ? "checked" : "unchecked"}
                         onPress={() => setChecked("driver")}
@@ -73,9 +79,9 @@ const SignInScreen = ({ navigation }) => {
                     };
                     let route;
                     if(checked === "user"){
-                       route = `${API_HOST}/api/users/login`;
+                       route = `${BASE_URL}/api/users/login`;
                     }else{
-                        route = `${API_HOST}/api/drivers/login`;
+                        route = `${BASE_URL}/api/drivers/login`;
                     }
                     axios
                         .post(
@@ -149,6 +155,7 @@ const SignInScreen = ({ navigation }) => {
                 buttonText="Close"
             />
         </View>
+        </ScrollView>
     );
 };
 
