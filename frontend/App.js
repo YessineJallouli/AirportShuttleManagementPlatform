@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { PaperProvider } from "react-native-paper";
 import SignInScreen from "./src/screens/signInScreen";
 import SignUpOptionsScreen from "./src/screens/signUpOptionsScreen";
-import SignUpUserScreen from "./src/screens/signUpUserScreen";
+import SignUpRiderScreen from "./src/screens/signUpRiderScreen";
 import ForgotPasswordScreen from "./src/screens/forgotPassword";
 import ResetPasswordScreen from "./src/screens/resetPasswordScreen";
 import SignUpDriverScreen from "./src/screens/signUpDriverScreen";
@@ -29,8 +29,8 @@ const App = () => {
                             component={SignUpOptionsScreen}
                         />
                         <Stack.Screen
-                            name="SignUpUser"
-                            component={SignUpUserScreen}
+                            name="SignUpRider"
+                            component={SignUpRiderScreen}
                         />
                         <Stack.Screen
                             name="SignUpDriver"

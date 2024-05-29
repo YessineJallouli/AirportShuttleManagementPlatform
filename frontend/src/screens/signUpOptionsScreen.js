@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { View, Pressable, Image, StyleSheet, Text } from "react-native";
 import driverImage from "../../assets/Images/driver.jpg";
-import userImage from "../../assets/Images/user.jpg";
+import riderImage from "../../assets/Images/rider.jpg";
 import { Button, MD3Colors } from "react-native-paper";
 
 const SignUpOptionsScreen = ({ navigation }) => {
   const [isDriverPressed, setIsDriverPressed] = useState(false);
-  const [isUserPressed, setIsUserPressed] = useState(false);
+  const [isRiderPressed, setIsRiderPressed] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -21,16 +21,16 @@ const SignUpOptionsScreen = ({ navigation }) => {
             isPressed: isDriverPressed,
             handlePress: () => {
               setIsDriverPressed(true);
-              setIsUserPressed(false);
+              setIsRiderPressed(false);
             },
           },
           {
-            text: "User",
-            image: userImage,
-            isPressed: isUserPressed,
+            text: "Rider",
+            image: riderImage,
+            isPressed: isRiderPressed,
             handlePress: () => {
               setIsDriverPressed(false);
-              setIsUserPressed(true);
+              setIsRiderPressed(true);
             },
           },
         ].map((content, index) => {
@@ -54,8 +54,8 @@ const SignUpOptionsScreen = ({ navigation }) => {
       <Button
         mode="contained"
         onPress={() => {
-          if (isUserPressed) {
-            navigation.navigate("SignUpUser");
+          if (isRiderPressed) {
+            navigation.navigate("SignUpRider");
           } else {
               navigation.navigate("SignUpDriver")
           }

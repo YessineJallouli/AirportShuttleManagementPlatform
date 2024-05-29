@@ -28,9 +28,9 @@ import PressableText from "../components/PressableText";
 import PwdValidUI from "../components/pwdValidUI";
 import ErrorText from "../components/ErrorText";
 import CustomModal from "../components/CustomModal";
-import {API_HOST} from '@env';
+import { BASE_URL } from '@env';
 
-const SignUpUserScreen = ({ navigation }) => {
+const SignUpRiderScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState("");
     const [firstNameValid, setfirstNameValid] = useState(true);
     const [lastName, setLastName] = useState("");
@@ -203,10 +203,17 @@ const SignUpUserScreen = ({ navigation }) => {
                                 password: pwd,
                                 dateOfBirth: dateOfBirth,
                                 country: country,
+                                phoneNumber: "",
+                                identityCard: "",
+                                drivingLicense: "",
+                                carRegistration: "",
+                                role: "rider"
                             };
+                            const route = `${BASE_URL}/api/users/register`;
+                            console.log(BASE_URL);
                             axios
                                 .post(
-                                    `${API_HOST}/api/users/register`,
+                                    route,
                                     userData
                                 )
                                 .then((response) => {
@@ -288,4 +295,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SignUpUserScreen;
+export default SignUpRiderScreen;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { IconButton, MD3Colors, RadioButton } from "react-native-paper";
+import { IconButton, MD3Colors } from "react-native-paper";
 import axios from "axios";
 
 import CustomInput from "../components/CustomInput";
@@ -11,7 +11,6 @@ import CustomModal from "../components/CustomModal";
 import {BASE_URL} from '@env';
 
 const SignInScreen = ({ navigation }) => {
-    const [checked, setChecked] = useState("user");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [visibleNotExist, setVisibleNotExist] = useState(false);
@@ -27,27 +26,6 @@ const SignInScreen = ({ navigation }) => {
             >
         <View style={styles.parentContainer}>
             <MainHeader />
-            <View style={styles.checkBoxesContainer}>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <RadioButton.Android
-                        value="user"
-                        status={checked === "user" ? "checked" : "unchecked"}
-                        onPress={() => setChecked("user")}
-                    />
-                    <Text>User</Text>
-                </View>
-
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <RadioButton.Android
-                        value="driver"
-                        status={checked === "driver" ? "checked" : "unchecked"}
-                        onPress={() => setChecked("driver")}
-                    />
-
-                    <Text>Driver</Text>
-                </View>
-            </View>
-
             <CustomInput
                 name="Email"
                 secure={false}
@@ -77,12 +55,7 @@ const SignInScreen = ({ navigation }) => {
                         email: email,
                         password: password,
                     };
-                    let route;
-                    if(checked === "user"){
-                       route = `${BASE_URL}/api/users/login`;
-                    }else{
-                        route = `${BASE_URL}/api/drivers/login`;
-                    }
+                    const route = `${BASE_URL}/api/users/login`;;
                     axios
                         .post(
                             route,
