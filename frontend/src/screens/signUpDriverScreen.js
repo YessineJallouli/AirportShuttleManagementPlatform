@@ -233,7 +233,6 @@ const SignUpDriverScreen = ({ navigation }) => {
                                 lastName: lastName,
                                 password: pwdValue,
                                 dateOfBirth: dateOfBirth,
-                                country: country,
                                 phoneNumber: phoneValue,
                                 identityCard: identityCard.base64,
                                 drivingLicense: drivingLicense.base64,

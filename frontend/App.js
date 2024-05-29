@@ -8,6 +8,7 @@ import SignUpRiderScreen from "./src/screens/signUpRiderScreen";
 import ForgotPasswordScreen from "./src/screens/forgotPassword";
 import ResetPasswordScreen from "./src/screens/resetPasswordScreen";
 import SignUpDriverScreen from "./src/screens/signUpDriverScreen";
+import Map from "./src/screens/mapScreen"
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,10 @@ const App = () => {
                         <Stack.Screen
                             name="ResetPassword"
                             component={ResetPasswordScreen}
+                        />
+                        <Stack.Screen
+                            name="Map"
+                            component={Map}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>

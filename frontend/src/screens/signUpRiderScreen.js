@@ -263,7 +263,7 @@ const SignUpRiderScreen = ({ navigation }) => {
                 setVisible={setVisibleCreated}
                 text={"You've registered successfully !"}
                 handlePress={() => navigation.navigate("SignIn")}
-                buttonText="Login In"
+                buttonText="Log In"
             />
 
             <CustomModal

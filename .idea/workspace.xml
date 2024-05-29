@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="001adedd-dd30-43d6-8a6f-00d8e836bebc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/controllers/drivers.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/drivers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/signUpDriverScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/signUpDriverScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/signUpRiderScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/signUpRiderScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +81,11 @@
       <workItem from="1714513067180" duration="1768000" />
       <workItem from="1714515185169" duration="289000" />
       <workItem from="1714515661129" duration="268000" />
+      <workItem from="1716985385807" duration="1925000" />
+      <workItem from="1716987954578" duration="259000" />
+      <workItem from="1716988526987" duration="71000" />
+      <workItem from="1716989372495" duration="44000" />
+      <workItem from="1716989618608" duration="241000" />
     </task>
     <servers />
   </component>
