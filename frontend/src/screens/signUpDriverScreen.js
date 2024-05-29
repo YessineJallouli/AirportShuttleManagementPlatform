@@ -6,7 +6,6 @@ import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import DatePicker from "../components/DatePicker";
 import ImageUpload from "../components/ImageUpload";
-import * as FileSystem from 'expo-file-system';
 import CustomModal from "../components/CustomModal";
 
 import {
@@ -24,7 +23,7 @@ import PressableText from "../components/PressableText";
 import PwdValidUI from "../components/pwdValidUI";
 import ErrorText from "../components/ErrorText";
 import axios from "axios";
-import {API_HOST} from '@env';
+import { BASE_URL } from '@env';
 
 const SignUpDriverScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState("");
@@ -238,9 +237,11 @@ const SignUpDriverScreen = ({ navigation }) => {
                                 identityCard: identityCard.base64,
                                 drivingLicense: drivingLicense.base64,
                                 carRegistration: carRegistration.base64,
+                                role: "driver"
                             };
+                            const route = `${BASE_URL}/api/users/register`; 
                             axios.post(
-                                    `${API_HOST}/api/drivers/register`,
+                                    route,
                                     driverData
                                 )
                                 .then((response) => {
@@ -258,10 +259,6 @@ const SignUpDriverScreen = ({ navigation }) => {
                                     setVisibleError(true);
                                     console.error("Error:", error);
                                 });
-
-                        }
-                        else {
-                            console.log("NOT VALID");
                         }
                     }}
                 />

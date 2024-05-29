@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 
 import users_routes from './routes/users.js';
-import driver_routes from "./routes/drivers.js";
 import 'dotenv/config'
 import bodyParser from 'body-parser';
 
@@ -21,5 +20,4 @@ mongoose.connect(`${process.env.DB_CONNEXION}`)
 
 app.use(express.json()) // for parsing application/json
 app.use('/api/users', users_routes);
-app.use('/api/drivers', driver_routes);
 

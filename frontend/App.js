@@ -9,6 +9,8 @@ import ForgotPasswordScreen from "./src/screens/forgotPassword";
 import ResetPasswordScreen from "./src/screens/resetPasswordScreen";
 import SignUpDriverScreen from "./src/screens/signUpDriverScreen";
 import Map from "./src/screens/mapScreen"
+import HomeScreen from "./src/screens/homeUserScreen";
+import UserAccountScreen from "./src/screens/userAccountScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +20,7 @@ const App = () => {
             <SafeAreaView style={styles.container}>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName="SignIn"
+                        initialRouteName="HomeUser"
                         screenOptions={{
                             headerShown: false,
                             contentStyle: { backgroundColor: "#FFFFFF" },
@@ -48,6 +50,14 @@ const App = () => {
                         <Stack.Screen
                             name="Map"
                             component={Map}
+                        />
+                          <Stack.Screen
+                            name="HomeUser"
+                            component={HomeScreen}
+                        />
+                          <Stack.Screen
+                            name="UserAccount"
+                            component={UserAccountScreen}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
