@@ -1,5 +1,8 @@
 import bcrypt from 'bcrypt'; 
 import User from "../models/User.js";
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = "07ddda787a944089bab608e1b82a6f429d7b70d8ee25eccbfbca0a0e30112324";
 
 export const register = async (req, res) => {
     const { email, firstName, lastName, password, dateOfBirth, country,  phoneNumber, identityCard, drivingLicense, carRegistration, role } =
@@ -44,12 +47,26 @@ export const login = async (req, res) => {
         try {
             const isPasswordMatch = await bcrypt.compare(password, oldUser.password);
             if (isPasswordMatch) {
-                res.send({ verdict: "logged" });
+                const token = jwt.sign({email:oldUser.email}, JWT_SECRET);
+                res.send({ verdict: "logged", userRole: oldUser.role, token : token}); 
             } else {
-                res.send({ verdict: "notMatch" });
+                res.send({ verdict: "notMatch"});
             }
         } catch (error) {
             res.send({ verdict: "error" });
         }
+    }
+}
+
+export const userData = async(req, res) => {
+    const {token} = req.body;
+    try{
+        const user = jwt.verify(token,JWT_SECRET);
+        const userEmail = user.email;
+        User.findOne({email : userEmail}).then((data) => {
+            return res.send({verdict : "success", data : data});
+        });
+    }catch(error){
+
     }
 }

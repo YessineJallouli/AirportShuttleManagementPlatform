@@ -1,5 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from 'cors';
+
 
 import users_routes from './routes/users.js';
 import 'dotenv/config'
@@ -7,6 +9,7 @@ import bodyParser from 'body-parser';
 
 
 const app = express();
+app.use(cors());
 
 app.use(bodyParser.json({ limit: '5mb' }));
 app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));

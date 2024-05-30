@@ -9,13 +9,13 @@ import PressableText from "../components/PressableText";
 import MainHeader from "../components/MainHeader";
 import CustomModal from "../components/CustomModal";
 import {BASE_URL} from '@env';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SignInScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [visibleNotExist, setVisibleNotExist] = useState(false);
     const [visibleNotMatch, setVisibleNotMatch] = useState(false);
-    const [visibleLogged, setVisibleLogged] = useState(false);
     const [visibleError, setVisibleError] = useState(false);
     return (
         <ScrollView
@@ -61,10 +61,19 @@ const SignInScreen = ({ navigation }) => {
                             route,
                             userData
                         )
-                        .then((response) => {
-                            console.log(response.data.verdict);
+                        .then(async (response) => {
                             if (response.data.verdict === "logged") {
-                                setVisibleLogged(true);
+                                try{
+                                    await AsyncStorage.setItem("isLoggedIn", JSON.stringify(true));
+                                    await AsyncStorage.setItem("userRole", response.data.userRole);
+                                    await AsyncStorage.setItem("token",response.data.token);
+                                }catch(error){
+                                    console.log(error);
+                                }
+                                if(response.data.userRole === "rider"){
+                                    navigation.replace("homeScreenRider"); // so we can't go the signIn page when log in
+                                }
+                                
                             } else if (response.data.verdict === "notExist") {
                                 setVisibleNotExist(true);
                             } else if (response.data.verdict === "notMatch") {
@@ -109,14 +118,6 @@ const SignInScreen = ({ navigation }) => {
                 setVisible={setVisibleNotMatch}
                 text={"Password is incorrect !"}
                 handlePress={() => setVisibleNotMatch(false)}
-                buttonText="Close"
-            />
-
-            <CustomModal
-                visible={visibleLogged}
-                setVisible={setVisibleLogged}
-                text={"You've successfully logged in"}
-                handlePress={() => setVisibleLogged(false)}
                 buttonText="Close"
             />
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -8,16 +9,44 @@ import SignUpRiderScreen from "./src/screens/signUpRiderScreen";
 import ForgotPasswordScreen from "./src/screens/forgotPassword";
 import ResetPasswordScreen from "./src/screens/resetPasswordScreen";
 import SignUpDriverScreen from "./src/screens/signUpDriverScreen";
+import HomeScreenRider from "./src/screens/homeScreenRider";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userRole, setUserRole] = useState(null);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const loggedIn = await AsyncStorage.getItem('isLoggedIn');
+                const role = await AsyncStorage.getItem('userRole');
+                console.log(loggedIn);
+                console.log(role);
+                setIsLoggedIn(loggedIn === "true");
+                setUserRole(role);
+            } catch (error) {
+                console.error('Error retrieving login status or user role:', error);
+            }
+        };
+        getData();
+    }, []); // Empty dependency array to run only once on component mount
+
+    let initialRouteName = 'SignIn';
+    if (isLoggedIn) {
+        if (userRole === 'rider') {
+            initialRouteName = 'homeScreenRider';
+        }
+    }
+
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName="SignIn"
+                        initialRouteName={initialRouteName} // Use initialRouteName variable
                         screenOptions={{
                             headerShown: false,
                             contentStyle: { backgroundColor: "#FFFFFF" },
@@ -43,6 +72,10 @@ const App = () => {
                         <Stack.Screen
                             name="ResetPassword"
                             component={ResetPasswordScreen}
+                        />
+                        <Stack.Screen
+                            name="homeScreenRider"
+                            component={HomeScreenRider}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
