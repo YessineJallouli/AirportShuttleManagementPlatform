@@ -2,11 +2,11 @@ import { useState } from "react";
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { IconButton, MD3Colors } from "react-native-paper";
 
-import CustomInput from "../components/CustomInput";
-import CustomButton from "../components/CustomButton";
-import DatePicker from "../components/DatePicker";
-import ImageUpload from "../components/ImageUpload";
-import CustomModal from "../components/CustomModal";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
+import DatePicker from "../../components/DatePicker";
+import ImageUpload from "../../components/ImageUpload";
+import CustomModal from "../../components/CustomModal";
 
 import {
     emailRegex,
@@ -17,11 +17,11 @@ import {
     isContainsSymbol,
     isValidLength,
     phoneNumberRegex,
-} from "../utilities/InputValidation";
-import MainHeader from "../components/MainHeader";
-import PressableText from "../components/PressableText";
-import PwdValidUI from "../components/pwdValidUI";
-import ErrorText from "../components/ErrorText";
+} from "../../utilities/InputValidation";
+import MainHeader from "../../components/MainHeader";
+import PressableText from "../../components/PressableText";
+import PwdValidUI from "../../components/pwdValidUI";
+import ErrorText from "../../components/ErrorText";
 import axios from "axios";
 import { BASE_URL } from '@env';
 

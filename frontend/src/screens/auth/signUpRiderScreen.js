@@ -10,9 +10,9 @@ import { IconButton, MD3Colors } from "react-native-paper";
 import { CountryPicker } from "react-native-country-codes-picker";
 import axios from "axios";
 
-import CustomInput from "../components/CustomInput";
-import CustomButton from "../components/CustomButton";
-import DatePicker from "../components/DatePicker";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
+import DatePicker from "../../components/DatePicker";
 
 import {
     emailRegex,
@@ -22,12 +22,12 @@ import {
     isContainsNumber,
     isContainsSymbol,
     isValidLength,
-} from "../utilities/InputValidation";
-import MainHeader from "../components/MainHeader";
-import PressableText from "../components/PressableText";
-import PwdValidUI from "../components/pwdValidUI";
-import ErrorText from "../components/ErrorText";
-import CustomModal from "../components/CustomModal";
+} from "../../utilities/InputValidation";
+import MainHeader from "../../components/MainHeader";
+import PressableText from "../../components/PressableText";
+import PwdValidUI from "../../components/pwdValidUI";
+import ErrorText from "../../components/ErrorText";
+import CustomModal from "../../components/CustomModal";
 import { BASE_URL } from '@env';
 
 const SignUpRiderScreen = ({ navigation }) => {
