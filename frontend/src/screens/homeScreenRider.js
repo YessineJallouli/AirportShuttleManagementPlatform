@@ -36,8 +36,16 @@ export default function HomeScreenRider() {
         setShowAccountOptions(!showAccountOptions);
     };
 
-    const handleLogOut = () => {
-        navigation.navigate('SignIn');
+    const handleLogOut = async () => {
+        console.log("hello there");
+        try {
+            await AsyncStorage.removeItem('isLoggedIn');
+            await AsyncStorage.removeItem('userRole');
+            await AsyncStorage.removeItem('token');
+            navigation.replace('SignIn'); // Navigate to SignIn screen
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
     };
 
     const handleAccountDetails = () => {
@@ -92,6 +100,8 @@ export default function HomeScreenRider() {
                 renderItem={({ item }) => <Text style={styles.rideItem}>{item.ride}</Text>}
                 style={styles.rideList}
             />
+
+            <Button title = "logout" onPress = {handleLogOut}/>
         </SafeAreaView>
     );
 }

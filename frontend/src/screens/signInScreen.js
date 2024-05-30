@@ -67,6 +67,7 @@ const SignInScreen = ({ navigation }) => {
                                     await AsyncStorage.setItem("isLoggedIn", JSON.stringify(true));
                                     await AsyncStorage.setItem("userRole", response.data.userRole);
                                     await AsyncStorage.setItem("token",response.data.token);
+                                    console.log("hello");
                                 }catch(error){
                                     console.log(error);
                                 }
