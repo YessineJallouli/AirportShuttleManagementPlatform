@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import CustomInput from "../components/CustomInput";
-import CustomButton from "../components/CustomButton";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
 import {
     isContainsLowercase,
     isWhiteSpace,
@@ -9,8 +9,8 @@ import {
     isContainsNumber,
     isContainsSymbol,
     isValidLength,
-} from "../utilities/InputValidation";
-import PwdValidUI from "../components/pwdValidUI";
+} from "../../utilities/InputValidation";
+import PwdValidUI from "../../components/pwdValidUI";
 
 const ResetPasswordScreen = () => {
     const [newPwdValue, setNewPwdValue] = useState("");

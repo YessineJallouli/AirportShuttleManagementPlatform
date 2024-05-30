@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { MD3Colors } from 'react-native-paper';
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import logoTmp from '../../assets/Images/logo_tmp.jpg';
+import Logo from '../../../assets/Images/logo_tmp.jpg';
 import { BASE_URL } from "@env";
 
 export default function HomeScreenRider() {
@@ -78,7 +78,7 @@ export default function HomeScreenRider() {
                     <Text style={styles.buttonText}>☰</Text>
                 </TouchableOpacity>
                 <Image
-                    source={require('../../assets/Images/logo_tmp.jpg')} 
+                    source={Logo} 
                     style={styles.logo}
                 />
             </View>

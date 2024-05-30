@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, Pressable, Image, StyleSheet, Text } from "react-native";
-import driverImage from "../../assets/Images/driver.jpg";
-import riderImage from "../../assets/Images/rider.jpg";
+import driverImage from "../../../assets/Images/driver.jpg";
+import riderImage from "../../../assets/Images/rider.jpg";
 import { Button, MD3Colors } from "react-native-paper";
 
 const SignUpOptionsScreen = ({ navigation }) => {
