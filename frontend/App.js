@@ -41,7 +41,7 @@ const App = () => {
     let initialRouteName = 'SignIn';
     if (isLoggedIn) {
         if (userRole === 'rider') {
-            initialRouteName = 'homeScreenRider';
+            initialRouteName = 'HomeScreenRider';
         }
     }
     
@@ -50,13 +50,16 @@ const App = () => {
             <SafeAreaView style={styles.container}>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName={Map} // Use initialRouteName variable
+                        initialRouteName={ initialRouteName} // Use initialRouteName variable
                         screenOptions={{
                             headerShown: false,
                             contentStyle: { backgroundColor: "#FFFFFF" },
                         }}
                     >
-                        <Stack.Screen name="SignIn" component={SignInScreen} />
+                        <Stack.Screen
+                         name="SignIn"
+                          component={SignInScreen}
+                           />
                         <Stack.Screen
                             name="SignUpOptions"
                             component={SignUpOptionsScreen}

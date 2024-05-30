@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, StyleSheet, Button, Image, ActivityIndicator} from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, StyleSheet, Button, Image, ActivityIndicator, Animated, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { MD3Colors } from 'react-native-paper';
@@ -8,36 +8,42 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import logoTmp from '../../assets/Images/logo_tmp.jpg';
 import { BASE_URL } from "@env";
 
-
 export default function HomeScreenRider() {
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     
-    const [userData, setUserData]= useState(null);
+    const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [sidebarVisible, setSidebarVisible] = useState(false);
+    const sidebarAnimation = useState(new Animated.Value(-Dimensions.get('window').width))[0]; // Initially positioned off-screen
+    
     const fetchData = async () => {
-        try{
+        try {
             const token = await AsyncStorage.getItem("token");
-            axios.post(`${BASE_URL}/api/users/userData`, {token : token}).then(res => setUserData(res.data.data));
+            axios.post(`${BASE_URL}/api/users/userData`, { token: token }).then(res => setUserData(res.data.data));
             await delay(3000);
-        }catch(error){
+        } catch (error) {
             console.error('Error fetching user data:', error);
-        }finally {
+        } finally {
             setLoading(false);
         }
     };
-    useEffect(()=>{
+
+    useEffect(() => {
         fetchData();
-    },[]);
+    }, []);
     
     const navigation = useNavigation();
-    const [showAccountOptions, setShowAccountOptions] = useState(false);
 
-    const handleAccountClick = () => {
-        setShowAccountOptions(!showAccountOptions);
+    const toggleSidebar = () => {
+        setSidebarVisible(!sidebarVisible);
+        Animated.timing(sidebarAnimation, {
+            toValue: sidebarVisible ? -Dimensions.get('window').width : 0, // Slide in/out
+            duration: 300,
+            useNativeDriver: true,
+        }).start();
     };
 
     const handleLogOut = async () => {
-        console.log("hello there");
         try {
             await AsyncStorage.removeItem('isLoggedIn');
             await AsyncStorage.removeItem('userRole');
@@ -61,12 +67,12 @@ export default function HomeScreenRider() {
                 <ActivityIndicator size="large" color={primaryPurple} />
             </SafeAreaView>
         );
-    }else return (
+    } else return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity
                     style={styles.accountButton}
-                    onPress={handleAccountClick}
+                    onPress={toggleSidebar}
                     activeOpacity={1} // Ensures button opacity is 100% when pressed
                 >
                     <Text style={styles.buttonText}>☰</Text>
@@ -75,14 +81,21 @@ export default function HomeScreenRider() {
                     source={require('../../assets/Images/logo_tmp.jpg')} 
                     style={styles.logo}
                 />
-                {showAccountOptions && (
-                    <View style={styles.accountOptions}>
-                        <Button title="Account Details" onPress={handleAccountDetails} color={MD3Colors.primary30} />
-                        <Button title="Log Out" onPress={handleLogOut} color={MD3Colors.primary30} />
-                    </View>
-                )}
             </View>
-            <Text style={styles.welcomeText}>Welcome {userData.firstName} {'\n'}Feel free to order a ride !</Text>
+            <Animated.View style={[styles.sidebar, { transform: [{ translateX: sidebarAnimation }] }]}>
+                <View style={styles.sidebarContent}>
+                    <TouchableOpacity style={styles.sidebarButton} onPress={handleAccountDetails}>
+                        <Text style={styles.sidebarButtonText}>Account Details</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.sidebarButton} onPress={handleLogOut}>
+                        <Text style={styles.sidebarButtonText}>Log Out</Text>
+                    </TouchableOpacity>
+                </View>
+                <TouchableOpacity style={styles.closeSidebarButton} onPress={toggleSidebar}>
+                    <Text style={styles.closeSidebarButtonText}>Close</Text>
+                </TouchableOpacity>
+            </Animated.View>
+            <Text style={styles.welcomeText}>Welcome {userData.firstName} {'\n'}Feel free to order a ride!</Text>
             <TouchableOpacity style={styles.requestButton}>
                 <Text style={styles.requestButtonText}>Request a Ride</Text>
             </TouchableOpacity>
@@ -100,8 +113,6 @@ export default function HomeScreenRider() {
                 renderItem={({ item }) => <Text style={styles.rideItem}>{item.ride}</Text>}
                 style={styles.rideList}
             />
-
-            <Button title = "logout" onPress = {handleLogOut}/>
         </SafeAreaView>
     );
 }
@@ -111,7 +122,6 @@ const primaryPurple = '#6200EE';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
         backgroundColor: '#f5f5f5',
     },
     loadingContainer: {
@@ -125,6 +135,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 20,
+        paddingHorizontal: 20,
     },
     accountButton: {
         backgroundColor: primaryPurple,
@@ -140,14 +151,45 @@ const styles = StyleSheet.create({
         height: 50,
         resizeMode: 'contain',
     },
-    accountOptions: {
+    sidebar: {
         position: 'absolute',
-        top: 40,
-        left: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        borderRadius: 5,
-        padding: 10,
+        top: 0,
+        left: 0,
+        width: Dimensions.get('window').width * 0.75,
+        height: '100%',
+        backgroundColor: '#fff', // Opaque background
+        paddingVertical: 20,
+        paddingHorizontal: 10,
         elevation: 5,
+        zIndex: 1000,
+    },
+    sidebarContent: {
+        flex: 1,
+        justifyContent: 'flex-start', // Align buttons towards the top
+        alignItems: 'center',
+        marginTop: 100, // Adjust this value to move buttons down
+    },
+    sidebarButton: {
+        backgroundColor: primaryPurple,
+        padding: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+        marginVertical: 10,
+        width: '80%',
+    },
+    sidebarButtonText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    closeSidebarButton: {
+        alignItems: 'center',
+        marginVertical: 20,
+    },
+    closeSidebarButtonText: {
+        color: primaryPurple,
+        fontSize: 16,
+        fontWeight: 'bold',
     },
     welcomeText: {
         fontSize: 24,
@@ -157,10 +199,11 @@ const styles = StyleSheet.create({
     },
     requestButton: {
         backgroundColor: primaryPurple,
-        padding: 15,
+        padding: 20,
         borderRadius: 10,
         alignItems: 'center',
         marginVertical: 20,
+        marginHorizontal: 20,
     },
     requestButtonText: {
         color: '#fff',
@@ -175,12 +218,12 @@ const styles = StyleSheet.create({
     },
     rideList: {
         marginBottom: 20,
+        marginHorizontal: 20,
     },
     rideItem: {
         backgroundColor: '#fff',
-        padding: 15,
+        padding: 20,
         borderRadius: 5,
-        marginBottom: 10,
-        elevation: 3,
+        marginBottom: 10
     },
 });
