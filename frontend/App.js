@@ -20,7 +20,7 @@ const App = () => {
             <SafeAreaView style={styles.container}>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName="HomeUser"
+                        initialRouteName="Map"
                         screenOptions={{
                             headerShown: false,
                             contentStyle: { backgroundColor: "#FFFFFF" },

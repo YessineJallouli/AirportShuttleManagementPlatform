@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
-import { Marker } from 'react-native-maps';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import {StyleSheet, View, SafeAreaView, Text, Image} from 'react-native';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import CustomButton from '../components/CustomButton';
+import markerPic from '../../assets/Images/marker.png';
 
 const INITIAL_REGION = {
-    latitude: 34.21990328478478,
-    longitude: 9.94603218510747,
-    latitudeDelta: 14.418300729444333,
-    longitudeDelta: 8.81210770457983,
+    latitude: 34.69046202675601,
+    longitude: 9.970483537763357,
+    latitudeDelta: 14.336851132718834,
+    longitudeDelta: 8.812108375132084,
 };
 
 const mapJson = [
@@ -48,35 +48,45 @@ export default function Map() {
     const [markerCoordinate, setMarkerCoordinate] = useState({
         latitude: INITIAL_REGION.latitude,
         longitude: INITIAL_REGION.longitude,
+        latitudeDelta: INITIAL_REGION.latitudeDelta,
+        longitudeDelta: INITIAL_REGION.longitudeDelta,
     });
 
     const onRegionChange = (region) => {
         setMarkerCoordinate({
             latitude: region.latitude,
             longitude: region.longitude,
+            latitudeDelta: region.latitudeDelta,
+            longitudeDelta: region.longitudeDelta,
         });
+    };
+
+    const handleConfirmDestination = () => {
+        console.log(markerCoordinate);
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
+                <Text style={styles.headerText}>Choose your destination</Text>
+                <Image style={styles.imageStyle} source= {markerPic} />
+
                 <View style={styles.mapContainer}>
                     <MapView
                         initialRegion={INITIAL_REGION}
                         style={styles.map}
                         provider={PROVIDER_GOOGLE}
                         showsMyLocationButton
+                        showsUserLocation={true}
                         onRegionChange={onRegionChange}
-                        customMapStyle={mapJson}>
-                        <Marker
-                            coordinate={markerCoordinate}
-                            title={'Choose your destination'}
-                        />
-                    </MapView>
+                        customMapStyle={mapJson}
+                    />
                 </View>
-
                 <View style={styles.bottomContainer}>
-                    <CustomButton name="Confirm Destination" />
+                    <CustomButton
+                        name="Confirm Destination"
+                        onPress={handleConfirmDestination}
+                    />
                 </View>
             </View>
         </SafeAreaView>
@@ -106,5 +116,24 @@ const styles = StyleSheet.create({
         bottom: 20,
         width: '100%',
         alignItems: 'center',
+    },
+    imageStyle: {
+        position : 'absolute',
+        zIndex: 10000,
+        marginBottom: 10,
+        width : 50,
+        height : 50,
+    },
+    headerText: {
+        position: 'absolute',
+        top: 30,
+        left: 0,
+        right: 0,
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: 'bold',
+        padding: 10,
+        zIndex: 10000,
+        textDecorationLine : "underline"
     },
 });
