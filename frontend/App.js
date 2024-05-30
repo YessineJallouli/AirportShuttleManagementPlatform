@@ -49,11 +49,7 @@ const App = () => {
             <SafeAreaView style={styles.container}>
                 <NavigationContainer>
                     <Stack.Navigator
-<<<<<<< HEAD
                         initialRouteName={initialRouteName} // Use initialRouteName variable
-=======
-                        initialRouteName="Map"
->>>>>>> f9b552874768b34c055b0aa60baad8b0a67025c5
                         screenOptions={{
                             headerShown: false,
                             contentStyle: { backgroundColor: "#FFFFFF" },
@@ -81,12 +77,9 @@ const App = () => {
                             component={ResetPasswordScreen}
                         />
                         <Stack.Screen
-<<<<<<< HEAD
                             name="homeScreenRider"
                             component={HomeScreenRider}
-=======
-                            name="Map"
-                            component={Map}
+                            
                         />
                           <Stack.Screen
                             name="HomeUser"
@@ -95,7 +88,6 @@ const App = () => {
                           <Stack.Screen
                             name="UserAccount"
                             component={UserAccountScreen}
->>>>>>> f9b552874768b34c055b0aa60baad8b0a67025c5
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
