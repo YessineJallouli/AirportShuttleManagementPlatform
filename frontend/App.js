@@ -22,6 +22,7 @@ import SignUpDriverScreen from "./src/screens/auth/signUpDriverScreen";
 import HomeScreenRider from "./src/screens/rider/homeScreenRider";
 import Map from "./src/screens/mapScreen";
 import UserAccountScreen from "./src/screens/userAccountScreen";
+import RequestRideScreen from "./src/screens/requestRideScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -115,7 +116,14 @@ const App = () => {
                                 name="UserAccount"
                                 component={UserAccountScreen}
                             />
-                            <Stack.Screen name="Map" component={Map} />
+                            <Stack.Screen
+                                name="Map"
+                                component={Map}
+                            />
+                            <Stack.Screen
+                                name="RequestRide"
+                                component={RequestRideScreen}
+                            />
                         </Stack.Navigator>
                     </NavigationContainer>
                 )}

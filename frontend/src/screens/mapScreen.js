@@ -44,7 +44,7 @@ const mapJson = [
     },
 ];
 
-export default function Map() {
+export default function Map({route, navigation }) {
     const [markerCoordinate, setMarkerCoordinate] = useState({
         latitude: INITIAL_REGION.latitude,
         longitude: INITIAL_REGION.longitude,
@@ -61,8 +61,9 @@ export default function Map() {
         });
     };
 
+
     const handleConfirmDestination = () => {
-        console.log(markerCoordinate);
+        navigation.navigate('RequestRide', {destinationCoordinate: markerCoordinate});
     };
 
     return (

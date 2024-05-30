@@ -5,17 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="001adedd-dd30-43d6-8a6f-00d8e836bebc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/assets/airports.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/screens/requestRideScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CustomInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CustomInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/screens/mapScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/mapScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -88,7 +97,15 @@
       <workItem from="1716989618608" duration="241000" />
       <workItem from="1716990125498" duration="1383000" />
       <workItem from="1716996106269" duration="245000" />
-      <workItem from="1717025322754" duration="2432000" />
+      <workItem from="1717025322754" duration="3610000" />
+      <workItem from="1717071677420" duration="366000" />
+      <workItem from="1717074584905" duration="197000" />
+      <workItem from="1717075011449" duration="8437000" />
+      <workItem from="1717085391540" duration="5636000" />
+      <workItem from="1717092060561" duration="9284000" />
+      <workItem from="1717106905288" duration="2730000" />
+      <workItem from="1717110034898" duration="2003000" />
+      <workItem from="1717112241832" duration="564000" />
     </task>
     <servers />
   </component>
