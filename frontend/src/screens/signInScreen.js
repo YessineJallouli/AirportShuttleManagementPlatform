@@ -71,7 +71,7 @@ const SignInScreen = ({ navigation }) => {
                                     console.log(error);
                                 }
                                 if(response.data.userRole === "rider"){
-                                    navigation.replace("homeScreenRider"); // so we can't go the signIn page when log in
+                                    navigation.replace("HomeScreenRider"); // so we can't go the signIn page when log in
                                 }
                                 
                             } else if (response.data.verdict === "notExist") {

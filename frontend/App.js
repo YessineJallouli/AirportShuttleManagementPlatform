@@ -3,6 +3,9 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { PaperProvider } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+// importing screens 
 import SignInScreen from "./src/screens/signInScreen";
 import SignUpOptionsScreen from "./src/screens/signUpOptionsScreen";
 import SignUpRiderScreen from "./src/screens/signUpRiderScreen";
@@ -10,9 +13,7 @@ import ForgotPasswordScreen from "./src/screens/forgotPassword";
 import ResetPasswordScreen from "./src/screens/resetPasswordScreen";
 import SignUpDriverScreen from "./src/screens/signUpDriverScreen";
 import HomeScreenRider from "./src/screens/homeScreenRider";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Map from "./src/screens/mapScreen"
-import HomeScreen from "./src/screens/homeUserScreen";
 import UserAccountScreen from "./src/screens/userAccountScreen";
 
 const Stack = createNativeStackNavigator();
@@ -43,13 +44,13 @@ const App = () => {
             initialRouteName = 'homeScreenRider';
         }
     }
-
+    
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName={initialRouteName} // Use initialRouteName variable
+                        initialRouteName={Map} // Use initialRouteName variable
                         screenOptions={{
                             headerShown: false,
                             contentStyle: { backgroundColor: "#FFFFFF" },
@@ -77,17 +78,18 @@ const App = () => {
                             component={ResetPasswordScreen}
                         />
                         <Stack.Screen
-                            name="homeScreenRider"
+                            name="HomeScreenRider"
                             component={HomeScreenRider}
                             
                         />
                           <Stack.Screen
-                            name="HomeUser"
-                            component={HomeScreen}
-                        />
-                          <Stack.Screen
                             name="UserAccount"
                             component={UserAccountScreen}
+                        />
+
+                        <Stack.Screen
+                            name="Map"
+                            component={Map}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
