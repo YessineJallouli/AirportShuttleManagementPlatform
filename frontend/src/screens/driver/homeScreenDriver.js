@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet, Button, Image, ActivityIndicator, Animated, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { MD3Colors } from 'react-native-paper';
+import { IconButton } from "react-native-paper";
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Logo from '../../../assets/Images/splashIcon.png';
@@ -112,12 +112,22 @@ export default function HomeScreenDriver() {
                     <View style={styles.rideItem}>
                         <Text>{item.ride}</Text>
                         <View style={styles.rideActions}>
-                            <TouchableOpacity onPress={() => handleAccept(item.id)} style={styles.acceptButton}>
-                                <Text style={styles.buttonText}>Accept</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => handleRefuse(item.id)} style={styles.refuseButton}>
-                                <Text style={styles.buttonText}>Refuse</Text>
-                            </TouchableOpacity>
+                            <IconButton
+                                icon="check"
+                                mode = "contained-tonal"
+                                iconColor= '#fff'
+                                size = {20}
+                                onPress = {() => console.log("accept pressed")}
+                                style = {{backgroundColor: '#28a745'}}
+                            />
+                            <IconButton
+                                icon="cancel"
+                                mode = "contained-tonal"
+                                iconColor= '#fff'
+                                size = {20}
+                                onPress = {() => console.log("accept pressed")}
+                                style = {{backgroundColor: '#dc3545'}}
+                            />
                         </View>
                     </View>
                 )}
@@ -238,12 +248,12 @@ const styles = StyleSheet.create({
         gap: 10,
     },
     acceptButton: {
-        backgroundColor: 'green',
+        backgroundColor: '#28a745',
         padding: 10,
         borderRadius: 5,
     },
     refuseButton: {
-        backgroundColor: 'red',
+        backgroundColor: '#dc3545',
         padding: 10,
         borderRadius: 5,
     },
