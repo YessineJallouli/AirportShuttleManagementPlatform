@@ -23,6 +23,7 @@ import HomeScreenRider from "./src/screens/rider/homeScreenRider";
 import Map from "./src/screens/rider/mapScreen";
 import UserAccountScreen from "./src/screens/userAccountScreen";
 import RequestRideScreen from "./src/screens/rider/requestRideScreen";
+import HomeScreenDriver from "./src/screens/driver/homeScreenDriver";
 
 const Stack = createNativeStackNavigator();
 
@@ -63,7 +64,7 @@ const App = () => {
         getData();
     }, []); // Empty dependency array to run only once on component mount
 
-    let initialRouteName = "RequestRide";
+    let initialRouteName = "HomeScreenDriver";
     if (isLoggedIn) {
         if (userRole === "rider") {
             initialRouteName = "homeScreenRider";
@@ -123,6 +124,10 @@ const App = () => {
                             <Stack.Screen
                                 name="RequestRide"
                                 component={RequestRideScreen}
+                            />
+                            <Stack.Screen
+                                name="HomeScreenDriver"
+                                component={HomeScreenDriver}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>
