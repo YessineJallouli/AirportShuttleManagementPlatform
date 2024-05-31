@@ -30,6 +30,12 @@ export default function HomeScreenRider() {
 
     useEffect(() => {
         fetchData();
+
+        const interval = setInterval(() => {
+            fetchData();
+        }, 2000); // Polling every 5 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
     }, []);
     
     const navigation = useNavigation();
@@ -62,7 +68,8 @@ export default function HomeScreenRider() {
         navigation.navigate('RequestRide');
     };
 
-    const pendingRides = [{ id: '1', ride: 'Pending Ride 1' }, { id: '2', ride: 'Pending Ride 2' }];
+    //const pendingRides = userData.rides;
+
     const confirmedRides = [{ id: '3', ride: 'Confirmed Ride 1' }];
 
     if (loading) {
@@ -103,20 +110,29 @@ export default function HomeScreenRider() {
             <TouchableOpacity style={styles.requestButton}  onPress={handleRequestRide}>
                 <Text style={styles.requestButtonText}>Request a Ride</Text>
             </TouchableOpacity>
-            <Text style={styles.sectionTitle}>Pending Rides</Text>
+            <Text style={styles.sectionTitle}>Your Rides</Text>
+
+
+
             <FlatList
-                data={pendingRides}
+                data={userData.rides}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <Text style={styles.rideItem}>{item.ride}</Text>}
+                renderItem={({ item }) => (
+                    <View style={styles.rideItem}>
+                        <Text>Airport: {item.airport}</Text>
+                        <Text>Arrival Day: {item.arrivalDay}</Text>
+                        <Text style={item.status === 'Pending' ? styles.pending : styles.accepted}>{item.status}</Text>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('RideDetails', {item})}
+                            style={styles.detailsButton}
+                        >
+                            <Text style={styles.detailsButtonText}>Details</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
                 style={styles.rideList}
             />
-            <Text style={styles.sectionTitle}>Confirmed Rides</Text>
-            <FlatList
-                data={confirmedRides}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <Text style={styles.rideItem}>{item.ride}</Text>}
-                style={styles.rideList}
-            />
+
         </SafeAreaView>
     );
 }
@@ -229,5 +245,20 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 5,
         marginBottom: 10
+    },
+    pending: {
+        color: '#ffc107',
+    },
+    accepted: {
+        color: 'green',
+    },
+    detailsButton: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+    },
+    detailsButtonText: {
+        fontWeight: 'bold',
+        color: 'black',
     },
 });

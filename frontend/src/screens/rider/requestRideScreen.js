@@ -206,7 +206,8 @@ const RequestRideScreen = ({ route, navigation }) => {
                                 arrivalTime: arrivalTime,
                                 gateNumber: gateNumber,
                                 nbRiders: nbRiders,
-                                destinationCoordinate : destinationCoordinate
+                                destinationCoordinate : destinationCoordinate,
+                                status : "Pending",
                             };
                             const route = `${BASE_URL}/api/users/requestRide`;
                             axios

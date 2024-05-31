@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="001adedd-dd30-43d6-8a6f-00d8e836bebc" name="Changes" comment="" />
+    <list default="true" id="001adedd-dd30-43d6-8a6f-00d8e836bebc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/rider/homeScreenRider.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/rider/homeScreenRider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/rider/requestRideScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/rider/requestRideScreen.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +108,19 @@
       <workItem from="1717118513838" duration="191000" />
       <workItem from="1717119347966" duration="2842000" />
       <workItem from="1717122390960" duration="1132000" />
-      <workItem from="1717123688467" duration="486000" />
+      <workItem from="1717123688467" duration="1199000" />
+      <workItem from="1717160429981" duration="42000" />
+      <workItem from="1717160858750" duration="325000" />
+      <workItem from="1717161363129" duration="71000" />
+      <workItem from="1717177023929" duration="1189000" />
+      <workItem from="1717179570651" duration="776000" />
+      <workItem from="1717180575425" duration="203000" />
+      <workItem from="1717181314250" duration="209000" />
+      <workItem from="1717181718865" duration="319000" />
+      <workItem from="1717182183226" duration="80000" />
+      <workItem from="1717182386992" duration="294000" />
+      <workItem from="1717182798747" duration="35000" />
+      <workItem from="1717184221860" duration="2000" />
     </task>
     <servers />
   </component>
