@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { MD3Colors } from 'react-native-paper';
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Logo from '../../../assets/Images/logo_tmp.jpg';
+import Logo from '../../../assets/Images/splashIcon.png';
 import { BASE_URL } from "@env";
 
 export default function HomeScreenRider() {
@@ -151,8 +151,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     logo: {
-        width: 50,
-        height: 50,
+        width: 80,
+        height: 80,
         resizeMode: 'contain',
     },
     sidebar: {
