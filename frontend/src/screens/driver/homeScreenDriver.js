@@ -14,6 +14,8 @@ export default function HomeScreenDriver() {
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [sidebarVisible, setSidebarVisible] = useState(false);
+    const [pendingRides, setPendingRides] = useState([]);
+    const [confirmedRides, setConfirmedRides] = useState([]);
     const sidebarAnimation = useState(new Animated.Value(-Dimensions.get('window').width))[0];
 
     const fetchData = async () => {
@@ -30,7 +32,21 @@ export default function HomeScreenDriver() {
 
     useEffect(() => {
         fetchData();
+        const interval = setInterval(() => {
+            fetchData();
+        }, 2000);
+
+        return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        if (userData) {
+            const pending = userData.rides.filter(ride => ride.status === 'Pending');
+            const confirmed = userData.rides.filter(ride => ride.status === 'confirmed');
+            setPendingRides(pending);
+            setConfirmedRides(confirmed);
+        }
+    }, [userData]);
 
     const navigation = useNavigation();
 
@@ -58,90 +74,105 @@ export default function HomeScreenDriver() {
         navigation.navigate('Account');
     };
 
-    const handleAccept = (rideId) => {
-        console.log('Ride accepted:', rideId);
+    const handleAccept = async (flightId) => {
+        try {
+            const token = await AsyncStorage.getItem("token");
+            axios.post(`${BASE_URL}/api/users/confirmRide`, { token: token, flightId : flightId });
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const handleRefuse = (rideId) => {
         console.log('Ride refused:', rideId);
     };
 
-    const pendingRides = [{ id: '1', ride: 'Pending Ride 1' }, { id: '2', ride: 'Pending Ride 2' }];
-    const confirmedRides = [{ id: '3', ride: 'Confirmed Ride 1' }];
-
+    
     if (loading) {
         return (
             <SafeAreaView style={styles.loadingContainer}>
                 <ActivityIndicator size="large" color={primaryPurple} />
             </SafeAreaView>
         );
-    } else return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity
-                    style={styles.accountButton}
-                    onPress={toggleSidebar}
-                    activeOpacity={1}
-                >
-                    <Text style={styles.buttonText}>☰</Text>
-                </TouchableOpacity>
-                <Image
-                    source={Logo}
-                    style={styles.logo}
-                />
-            </View>
-            <Animated.View style={[styles.sidebar, { transform: [{ translateX: sidebarAnimation }] }]}>
-                <View style={styles.sidebarContent}>
-                    <TouchableOpacity style={styles.sidebarButton} onPress={handleAccountDetails}>
-                        <Text style={styles.sidebarButtonText}>Account Details</Text>
+    } else {
+        console.log(pendingRides)
+        return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.header}>
+                    <TouchableOpacity
+                        style={styles.accountButton}
+                        onPress={toggleSidebar}
+                        activeOpacity={1}
+                    >
+                        <Text style={styles.buttonText}>☰</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.sidebarButton} onPress={handleLogOut}>
-                        <Text style={styles.sidebarButtonText}>Log Out</Text>
-                    </TouchableOpacity>
+                    <Image
+                        source={Logo}
+                        style={styles.logo}
+                    />
                 </View>
-                <TouchableOpacity style={styles.closeSidebarButton} onPress={toggleSidebar}>
-                    <Text style={styles.closeSidebarButtonText}>Close</Text>
-                </TouchableOpacity>
-            </Animated.View>
-            <Text style={styles.welcomeText}>Welcome {userData.firstName} {'\n'}Feel free to offer a ride!</Text>
-            <Text style={styles.sectionTitle}>Requested Rides</Text>
-            <FlatList
-                data={pendingRides}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                    <View style={styles.rideItem}>
-                        <Text>{item.ride}</Text>
-                        <View style={styles.rideActions}>
-                            <IconButton
-                                icon="check"
-                                mode = "contained-tonal"
-                                iconColor= '#fff'
-                                size = {20}
-                                onPress = {() => console.log("accept pressed")}
-                                style = {{backgroundColor: '#28a745'}}
-                            />
-                            <IconButton
-                                icon="cancel"
-                                mode = "contained-tonal"
-                                iconColor= '#fff'
-                                size = {20}
-                                onPress = {() => console.log("accept pressed")}
-                                style = {{backgroundColor: '#dc3545'}}
-                            />
-                        </View>
+                <Animated.View style={[styles.sidebar, { transform: [{ translateX: sidebarAnimation }] }]}>
+                    <View style={styles.sidebarContent}>
+                        <TouchableOpacity style={styles.sidebarButton} onPress={handleAccountDetails}>
+                            <Text style={styles.sidebarButtonText}>Account Details</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.sidebarButton} onPress={handleLogOut}>
+                            <Text style={styles.sidebarButtonText}>Log Out</Text>
+                        </TouchableOpacity>
                     </View>
-                )}
-                style={styles.rideList}
-            />
-            <Text style={styles.sectionTitle}>Confirmed Rides</Text>
-            <FlatList
-                data={confirmedRides}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <Text style={styles.rideItem}>{item.ride}</Text>}
-                style={styles.rideList}
-            />
-        </SafeAreaView>
-    );
+                    <TouchableOpacity style={styles.closeSidebarButton} onPress={toggleSidebar}>
+                        <Text style={styles.closeSidebarButtonText}>Close</Text>
+                    </TouchableOpacity>
+                </Animated.View>
+                <Text style={styles.welcomeText}>Welcome {userData.firstName}</Text>
+                <Text style={styles.sectionTitle}>Requested Rides</Text>
+                <FlatList
+                    data={pendingRides}
+                    keyExtractor={(item) => item.flightId}
+                    renderItem={({ item }) => (
+                        <View style={styles.rideItem}>
+                                <Text style = {{marginBottom : 5}}>Airport: {item.airport}</Text>
+                                <Text style = {{marginBottom : 5}}>Arrival Day: {item.arrivalDay}</Text>
+                                <Text style = {{fontWeight : "bold"}}>More Details</Text>
+                                <View style = {{flexDirection: "row", justifyContent : "flex-end"}}>
+                                <IconButton
+                                    icon="check"
+                                    mode = "contained-tonal"
+                                    iconColor= '#fff'
+                                    size = {20}
+                                    onPress = {() => handleAccept(item.flightId)}
+                                    style = {{backgroundColor: '#28a745'}}
+                                />
+                                <IconButton
+                                    icon="cancel"
+                                    mode = "contained-tonal"
+                                    iconColor= '#fff'
+                                    size = {20}
+                                    onPress = {() => handleAccept}
+                                    style = {{backgroundColor: '#dc3545'}}
+                                />
+
+                                </View>
+                        </View>
+                    )}
+                    style={styles.rideList}
+                />
+                <Text style={styles.sectionTitle}>Confirmed Rides</Text>
+                <FlatList
+                    data={confirmedRides}
+                    keyExtractor={(item) => item.flightId}
+                    renderItem={({ item }) => (
+                        <View style={styles.rideItem}>
+                                <Text style = {{marginBottom : 5}}>Airport: {item.airport}</Text>
+                                <Text style = {{marginBottom : 5}}>Arrival Day: {item.arrivalDay}</Text>
+                                <Text style = {{fontWeight : "bold"}}>More Details</Text>
+                        </View>
+                    )}
+                    style={styles.rideList}
+                />
+            </SafeAreaView>
+        );
+    }
 }
 
 const primaryPurple = '#6200EE';
@@ -239,13 +270,6 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 5,
         marginBottom: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    rideActions: {
-        flexDirection: 'row',
-        gap: 10,
     },
     acceptButton: {
         backgroundColor: '#28a745',

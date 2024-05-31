@@ -95,9 +95,79 @@ export const requestRide = async (req, res) => {
             { new: true }
         );
 
+        await addRideForAllDrivers(ride);
+
         res.send({ verdict: "created" });
     } catch (error) {
         console.error(error);
+        res.send({ verdict: "error" });
+    }
+}
+
+const addRideForAllDrivers = async (rideDetails) => {
+    try {
+      // Query your database to find all drivers
+      const allDrivers = await User.find({ role: 'driver' });
+  
+      // Add the ride for each driver
+      for (const driver of allDrivers) {
+        // Add the ride to the driver's data
+        await User.findOneAndUpdate(
+          { _id: driver._id },
+          { $push: { rides: rideDetails } },
+          { new: true }
+        );
+      }
+    } catch (error) {
+      console.error('Error adding ride for all drivers:', error);
+    }
+}
+
+export const confirmRide = async (req, res) => {
+    const { token, flightId } = req.body;
+
+    try {
+        // Verify user token to get the user's email
+        const user = jwt.verify(token, JWT_SECRET);
+        const userEmail = user.email;
+
+        // Update the ride status to "confirmed" for the specific user
+        await User.findOneAndUpdate(
+            { email: userEmail, 'rides.flightId': flightId },
+            { $set: { 'rides.$.status': 'confirmed' } }
+        );
+
+        // Remove the ride from the pending list of all other drivers
+        await User.updateMany(
+            { 'rides.flightId': flightId, 'rides.status': 'pending', email: { $ne: userEmail } },
+            { $pull: { rides: { flightId: flightId } } }
+        );
+
+        res.send({ verdict: "confirmed" });
+    } catch (error) {
+        console.error('Error confirming ride:', error);
+        res.send({ verdict: "error" });
+    }
+}
+
+// Controller function to cancel ride for the driver
+export const cancelRide = async (req, res) => {
+    const { token, flightId } = req.body;
+
+    try {
+        // Verify user token to get the user's email
+        const user = jwt.verify(token, JWT_SECRET);
+        const userEmail = user.email;
+
+        // Delete the ride from the user's pending rides
+        await User.updateOne(
+            { email: userEmail, 'rides.flightId': flightId },
+            { $pull: { rides: { flightId: flightId } } }
+        );
+
+        res.send({ verdict: "cancelled" });
+    } catch (error) {
+        console.error('Error cancelling ride:', error);
         res.send({ verdict: "error" });
     }
 }

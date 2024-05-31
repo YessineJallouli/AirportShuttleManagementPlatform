@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet, Image, ActivityIndicator, Animated, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { MD3Colors } from 'react-native-paper';
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Logo from '../../../assets/Images/splashIcon.png';
@@ -33,7 +32,7 @@ export default function HomeScreenRider() {
 
         const interval = setInterval(() => {
             fetchData();
-        }, 2000); // Polling every 5 seconds
+        }, 2000);
 
         return () => clearInterval(interval); // Cleanup interval on component unmount
     }, []);
@@ -70,7 +69,7 @@ export default function HomeScreenRider() {
 
     //const pendingRides = userData.rides;
 
-    const confirmedRides = [{ id: '3', ride: 'Confirmed Ride 1' }];
+    //const confirmedRides = [{ id: '3', ride: 'Confirmed Ride 1' }];
 
     if (loading) {
         return (
@@ -248,6 +247,7 @@ const styles = StyleSheet.create({
     },
     pending: {
         color: '#ffc107',
+        fontWeight : "bold"
     },
     accepted: {
         color: 'green',
