@@ -18,6 +18,7 @@ import { BASE_URL } from '@env';
 import DatePicker from "../../components/DatePicker";
 import TimePicker from "../../components/TimePicker";
 import CustomModal from "../../components/CustomModal";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import axios from "axios";
 
@@ -166,14 +167,6 @@ const RequestRideScreen = ({ route, navigation }) => {
                         label= "Estimated Arrival Time"
                     />
 
-                    {/* <CustomInput
-                        name="Estimated Arrival Time"
-                        secure={false}
-                        value = {arrivalTime}
-                        onChange = {setArrivalTime}
-                    /> */}
-
-
                     <CustomInput
                         name="Gate Number"
                         secure={false}
@@ -203,8 +196,10 @@ const RequestRideScreen = ({ route, navigation }) => {
                     )}
                     <CustomButton
                         name="Confirm Request"
-                        onPress={() => {
+                        onPress={async () => {
+                            const token = await AsyncStorage.getItem('token');
                             const rideData = {
+                                token : token,
                                 airport : airportInput,
                                 flightId : flightId,
                                 arrivalDay : arrivalDay,
@@ -213,7 +208,7 @@ const RequestRideScreen = ({ route, navigation }) => {
                                 nbRiders: nbRiders,
                                 destinationCoordinate : destinationCoordinate
                             };
-                            const route = `${BASE_URL}/api/rides/request`;
+                            const route = `${BASE_URL}/api/users/requestRide`;
                             axios
                                 .post(
                                     route,

@@ -70,3 +70,33 @@ export const userData = async(req, res) => {
 
     }
 }
+
+export const requestRide = async (req, res) => {
+    const { token, airport, flightId, arrivalDay, arrivalTime, gateNumber, nbRiders, destinationCoordinate } = req.body;
+
+    try {
+        const user = jwt.verify(token, JWT_SECRET);
+        const userEmail = user.email;
+
+        const ride = {
+            airport,
+            flightId,
+            arrivalDay,
+            arrivalTime,
+            gateNumber,
+            nbRiders,
+            destinationCoordinate
+        };
+
+        await User.findOneAndUpdate(
+            { email: userEmail },
+            { $push: { rides: ride } },
+            { new: true }
+        );
+
+        res.send({ verdict: "created" });
+    } catch (error) {
+        console.error(error);
+        res.send({ verdict: "error" });
+    }
+}
