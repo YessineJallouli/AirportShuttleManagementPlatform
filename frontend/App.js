@@ -64,10 +64,12 @@ const App = () => {
         getData();
     }, []);
 
-    let initialRouteName = "HomeScreenDriver";
+    let initialRouteName = "SignIn";
     if (isLoggedIn) {
         if (userRole === "rider") {
-            //initialRouteName = "homeScreenRider";
+            initialRouteName = "HomeScreenRider";
+        }else{
+            initialRouteName = "HomeScreenDriver"
         }
     }
 

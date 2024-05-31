@@ -16,6 +16,7 @@ import styled from "styled-components";
 import airportsData from '../../../assets/airports.json';
 import { BASE_URL } from '@env';
 import DatePicker from "../../components/DatePicker";
+import TimePicker from "../../components/TimePicker";
 import CustomModal from "../../components/CustomModal";
 
 import axios from "axios";
@@ -160,13 +161,17 @@ const RequestRideScreen = ({ route, navigation }) => {
                         label= "Arrival Day"
                     />
 
+                    <TimePicker
+                        handle={setArrivalTime}
+                        label= "Estimated Arrival Time"
+                    />
 
-                    <CustomInput
+                    {/* <CustomInput
                         name="Estimated Arrival Time"
                         secure={false}
                         value = {arrivalTime}
                         onChange = {setArrivalTime}
-                    />
+                    /> */}
 
 
                     <CustomInput

@@ -3,25 +3,26 @@ import { useState } from "react";
 import { View, Pressable, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
 
-const DatePicker = (props) => {
-  const [date, setDate] = useState(new Date());
+const TimePicker = (props) => {
+  const [time, setTime] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [val, setVal] = useState("");
 
-  const toggleDatePicker = () => {
+  const toggleTimePicker = () => {
     setShowPicker(!showPicker);
   };
 
-  const onChange = ({ type }, selectedDate) => {
+  const onChange = ({ type }, selectedTime) => {
     if (type === "set") {
-      const currentDate = selectedDate;
-      setDate(currentDate);
-      toggleDatePicker();
-      setDateOfBirth(currentDate.toDateString());
-      props.handle(currentDate.toDateString());
+      const currentTime = selectedTime;
+      setTime(currentTime);
+      toggleTimePicker();
+      const formattedTime = currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      setVal(formattedTime);
+      props.handle(currentTime);
       
     } else {
-      toggleDatePicker();
+      toggleTimePicker();
     }
   };
 
@@ -29,22 +30,22 @@ const DatePicker = (props) => {
     <View style={styles.textBox}>
       {showPicker && (
         <DateTimePicker
-          mode="date"
+          mode="time"
           display="spinner"
-          value={date}
+          value={time}
           onChange={onChange}
         />
       )}
 
-      <Pressable onPress={toggleDatePicker}>
+      <Pressable onPress={toggleTimePicker}>
         <TextInput
           mode="outlined"
           secure={false}
           label={props.label}
-          value={dateOfBirth}
-          onChangeText={setDateOfBirth}
+          value={val}
+          onChangeText={setVal}
           editable={false}
-          onPressIn={toggleDatePicker}
+          onPressIn={toggleTimePicker}
         />
       </Pressable>
     </View>
@@ -58,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DatePicker;
+export default TimePicker;
