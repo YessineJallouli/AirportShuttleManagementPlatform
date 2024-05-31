@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {StyleSheet, View, SafeAreaView, Text, Image} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import CustomButton from '../components/CustomButton';
-import markerPic from '../../assets/Images/marker.png';
+import CustomButton from '../../components/CustomButton';
+import markerPic from '../../../assets/Images/marker.png';
 
 const INITIAL_REGION = {
     latitude: 34.69046202675601,
@@ -44,7 +44,7 @@ const mapJson = [
     },
 ];
 
-export default function Map() {
+export default function Map({route, navigation }) {
     const [markerCoordinate, setMarkerCoordinate] = useState({
         latitude: INITIAL_REGION.latitude,
         longitude: INITIAL_REGION.longitude,
@@ -61,8 +61,9 @@ export default function Map() {
         });
     };
 
+
     const handleConfirmDestination = () => {
-        console.log(markerCoordinate);
+        navigation.navigate('RequestRide', {destinationCoordinate: markerCoordinate});
     };
 
     return (

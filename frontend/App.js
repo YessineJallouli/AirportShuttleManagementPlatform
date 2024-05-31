@@ -20,8 +20,9 @@ import ForgotPasswordScreen from "./src/screens/auth/forgotPassword";
 import ResetPasswordScreen from "./src/screens/auth/resetPasswordScreen";
 import SignUpDriverScreen from "./src/screens/auth/signUpDriverScreen";
 import HomeScreenRider from "./src/screens/rider/homeScreenRider";
-import Map from "./src/screens/mapScreen";
+import Map from "./src/screens/rider/mapScreen";
 import UserAccountScreen from "./src/screens/userAccountScreen";
+import RequestRideScreen from "./src/screens/rider/requestRideScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -62,7 +63,7 @@ const App = () => {
         getData();
     }, []); // Empty dependency array to run only once on component mount
 
-    let initialRouteName = "SignIn";
+    let initialRouteName = "RequestRide";
     if (isLoggedIn) {
         if (userRole === "rider") {
             initialRouteName = "homeScreenRider";
@@ -115,7 +116,14 @@ const App = () => {
                                 name="UserAccount"
                                 component={UserAccountScreen}
                             />
-                            <Stack.Screen name="Map" component={Map} />
+                            <Stack.Screen
+                                name="Map"
+                                component={Map}
+                            />
+                            <Stack.Screen
+                                name="RequestRide"
+                                component={RequestRideScreen}
+                            />
                         </Stack.Navigator>
                     </NavigationContainer>
                 )}
