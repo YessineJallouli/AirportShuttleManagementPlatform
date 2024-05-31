@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="001adedd-dd30-43d6-8a6f-00d8e836bebc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/assets/airports.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/screens/requestRideScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CustomInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CustomInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/screens/mapScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/mapScreen.js" afterDir="false" />
-    </list>
+    <list default="true" id="001adedd-dd30-43d6-8a6f-00d8e836bebc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +96,11 @@
       <workItem from="1717092060561" duration="9284000" />
       <workItem from="1717106905288" duration="2730000" />
       <workItem from="1717110034898" duration="2003000" />
-      <workItem from="1717112241832" duration="564000" />
+      <workItem from="1717112241832" duration="1628000" />
+      <workItem from="1717118513838" duration="191000" />
+      <workItem from="1717119347966" duration="2842000" />
+      <workItem from="1717122390960" duration="1132000" />
+      <workItem from="1717123688467" duration="486000" />
     </task>
     <servers />
   </component>

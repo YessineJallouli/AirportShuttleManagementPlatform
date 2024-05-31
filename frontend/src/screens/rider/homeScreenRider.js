@@ -58,6 +58,10 @@ export default function HomeScreenRider() {
         navigation.navigate('Account');
     };
 
+    const handleRequestRide = () => {
+        navigation.navigate('RequestRide');
+    };
+
     const pendingRides = [{ id: '1', ride: 'Pending Ride 1' }, { id: '2', ride: 'Pending Ride 2' }];
     const confirmedRides = [{ id: '3', ride: 'Confirmed Ride 1' }];
 
@@ -96,7 +100,7 @@ export default function HomeScreenRider() {
                 </TouchableOpacity>
             </Animated.View>
             <Text style={styles.welcomeText}>Welcome {userData.firstName} {'\n'}Feel free to order a ride!</Text>
-            <TouchableOpacity style={styles.requestButton}>
+            <TouchableOpacity style={styles.requestButton}  onPress={handleRequestRide}>
                 <Text style={styles.requestButtonText}>Request a Ride</Text>
             </TouchableOpacity>
             <Text style={styles.sectionTitle}>Pending Rides</Text>
