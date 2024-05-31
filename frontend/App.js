@@ -24,6 +24,7 @@ import Map from "./src/screens/rider/mapScreen";
 import UserAccountScreen from "./src/screens/userAccountScreen";
 import RequestRideScreen from "./src/screens/rider/requestRideScreen";
 import HomeScreenDriver from "./src/screens/driver/homeScreenDriver";
+import RideDetailsScreen from "./src/screens/rideDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -130,6 +131,10 @@ const App = () => {
                             <Stack.Screen
                                 name="HomeScreenDriver"
                                 component={HomeScreenDriver}
+                            />
+                            <Stack.Screen
+                                name="RideDetails"
+                                component={RideDetailsScreen}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>

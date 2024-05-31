@@ -72,7 +72,7 @@ export const userData = async(req, res) => {
 }
 
 export const requestRide = async (req, res) => {
-    const { token, airport, flightId, arrivalDay, arrivalTime, gateNumber, nbRiders, destinationCoordinate } = req.body;
+    const { token, airport, flightId, arrivalDay, arrivalTime, gateNumber, nbRiders, destinationCoordinate, status } = req.body;
 
     try {
         const user = jwt.verify(token, JWT_SECRET);
@@ -85,7 +85,8 @@ export const requestRide = async (req, res) => {
             arrivalTime,
             gateNumber,
             nbRiders,
-            destinationCoordinate
+            destinationCoordinate,
+            status,
         };
 
         await User.findOneAndUpdate(
