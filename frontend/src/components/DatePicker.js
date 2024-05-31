@@ -40,7 +40,7 @@ const DatePicker = (props) => {
         <TextInput
           mode="outlined"
           secure={false}
-          label="Birthday"
+          label={props.label}
           value={dateOfBirth}
           onChangeText={setDateOfBirth}
           editable={false}

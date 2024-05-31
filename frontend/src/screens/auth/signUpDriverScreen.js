@@ -146,7 +146,10 @@ const SignUpDriverScreen = ({ navigation }) => {
                 </View>
                 {/* shows only when passwords don't match*/}
 
-                <DatePicker handle={setDateOfBirth} />
+                <DatePicker
+                    handle={setDateOfBirth}
+                    label= "Birthday"
+                />
 
                 <ErrorText
                     check={dateOfBirthValid}

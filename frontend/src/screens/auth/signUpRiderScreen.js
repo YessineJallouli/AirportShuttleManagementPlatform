@@ -118,7 +118,10 @@ const SignUpRiderScreen = ({ navigation }) => {
                 />
                 <ErrorText check={pwdMatch} text="Password does not match" />
 
-                <DatePicker handle={setDateOfBirth} />
+                <DatePicker
+                    handle={setDateOfBirth}
+                    label= "Birthday"
+                />
 
                 <ErrorText
                     check={dateOfBirthValid}

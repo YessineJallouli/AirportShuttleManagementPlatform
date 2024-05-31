@@ -66,7 +66,7 @@ const App = () => {
     let initialRouteName = "RequestRide";
     if (isLoggedIn) {
         if (userRole === "rider") {
-            initialRouteName = "homeScreenRider";
+            //initialRouteName = "homeScreenRider";
         }
     }
 
