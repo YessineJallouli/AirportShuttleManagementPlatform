@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {StyleSheet, View, SafeAreaView, Text, Image} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import CustomButton from '../components/CustomButton';
-import markerPic from '../../assets/Images/marker.png';
+import CustomButton from '../../components/CustomButton';
+import markerPic from '../../../assets/Images/marker.png';
 
 const INITIAL_REGION = {
     latitude: 34.69046202675601,

@@ -9,10 +9,10 @@ import {
     Keyboard,
     TouchableWithoutFeedback,
 } from "react-native";
-import CustomInput from "../components/CustomInput";
-import CustomButton from "../components/CustomButton";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
 import styled from "styled-components";
-import airportsData from '../../assets/airports.json';
+import airportsData from '../../../assets/airports.json';
 
 const Colors = {
     primary: "#ffffff",
