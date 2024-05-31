@@ -11,6 +11,8 @@ const CustomInput = (props) => {
         onChangeText={props.onChange}
         value = {props.value}
         keyboardType={props.keyboardType}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
       />
     </View>
   );
