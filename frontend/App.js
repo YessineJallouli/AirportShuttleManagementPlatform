@@ -60,7 +60,7 @@ const App = () => {
             }
         };
         getData();
-    }, []); // Empty dependency array to run only once on component mount
+    }, []);
 
     let initialRouteName = "SignIn";
     if (isLoggedIn) {

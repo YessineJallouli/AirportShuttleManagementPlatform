@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, StyleSheet, Button, Image, ActivityIndicator} from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, StyleSheet, Button, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { MD3Colors } from 'react-native-paper';
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Logo from '../../../assets/Images/logo_tmp.jpg';
+import Logo from '../../../assets/Images/splashIcon.png';
 import { BASE_URL } from "@env";
 
 
@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     logo: {
-        width: 50,
-        height: 50,
+        width: 80,
+        height: 80,
         resizeMode: 'contain',
     },
     accountOptions: {

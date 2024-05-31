@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     identityCard: String,
     drivingLicense: String,
     carRegistration: String,
-    role: { type: String, enum: ["driver", "rider"], required: true }
+    role: { type: String, enum: ["driver", "rider"], required: true },
 });
 
 const User = mongoose.model("User", userSchema);
