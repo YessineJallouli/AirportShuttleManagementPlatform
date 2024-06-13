@@ -128,7 +128,7 @@ export default function HomeScreenDriver() {
                 <Text style={styles.sectionTitle}>Requested Rides</Text>
                 <FlatList
                     data={pendingRides}
-                    keyExtractor={(item) => item.flightId}
+                    keyExtractor={(item) => item._id.toString()}
                     renderItem={({ item }) => (
                         <View style={styles.rideItem}>
                                 <Text style = {{marginBottom : 5}}>Airport: {item.airport}</Text>

@@ -115,7 +115,7 @@ export default function HomeScreenRider() {
 
             <FlatList
                 data={userData.rides}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item._id.toString()}
                 renderItem={({ item }) => (
                     <View style={styles.rideItem}>
                         <Text>Airport: {item.airport}</Text>
